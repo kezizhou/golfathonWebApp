@@ -1,0 +1,8 @@
+tr.highDonations > td, text.boldRed {
+	color: red;
+	font-weight: bold;
+}
+
+td#normalWeight {
+	font-weight: normal;
+}
