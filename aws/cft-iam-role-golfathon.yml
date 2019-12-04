@@ -1,0 +1,77 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: "IAM Role and Policy for Golfathon Web App"
+Parameters:
+  stackName:
+    Default: "cft-iam-role-golfathon-dev"
+    Description: "Name of stack"
+    Type: String
+  env:
+    Default: "dev"
+    Description: "Environment of instance: dev, qa, or prod"
+    Type: String
+Resources:
+  golfathonIAMRoleDev:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - "ec2.amazonaws.com"
+            Action:
+              - "sts:AssumeRole"
+      RoleName: golfathon-role
+  golfathonEC2Policy:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: golfathon-policy
+      Roles:
+        - golfathon-role
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Sid: "EC2Permissions"
+            Effect: "Allow"
+            Action: 
+            - "ec2:DetachVolume"
+            - "ec2:AttachVolume"
+            - "ec2:ModifyVolume"
+            - "ec2:ModifyVolumeAttribute"
+            - "ec2:CreateTags"
+            - "ec2:DescribeVolumeAttribute"
+            - "ec2:DescribeVolumeStatus"
+            - "ec2:DescribeAvailabilityZones"
+            - "ec2:DescribeVolumes"
+            - "ec2messages:GetEndpoint"
+            - "ec2messages:GetMessages"
+            - "ec2messages:DeleteMessage"
+            - "ec2messages:FailMessage"
+            - "ec2:DescribeInstanceStatus"
+            - "ec2messages:SendReply"
+            Resource: 
+              - "*"
+          - Sid: "KMSPermissions"
+            Effect: "Allow"
+            Action: 
+              - "kms:ListKeys"
+              - "kms:ListAliases"
+            Resource: 
+              - "*"
+          - Sid: "LogPermissions"
+            Effect: "Allow"
+            Action: 
+            - "logs:DescribeLogStreams"
+            - "logs:CreateLogStream"
+            - "logs:DescribeLogGroups"
+            - "logs:CreateLogGroup"
+            - "logs:PutLogEvents"
+            Resource: 
+              - "*"
+  golfathonInstProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties: 
+      InstanceProfileName: golfathon-role
+      Roles: 
+        - Ref: golfathonIAMRoleDev
