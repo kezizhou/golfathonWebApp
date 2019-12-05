@@ -25,4 +25,24 @@
     function charConvert($strText) {
         return htmlspecialchars($strText, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
     }
+
+    function checkLoginExpire() {
+        session_start();
+        $loginDuration = 3600;
+        try {
+            if( isset($_SESSION['loginTime']) ) {
+                if( (time() - $_SESSION['loginTime']) < $loginDuration ) {
+                    return;
+                } else {
+                    header("Location: " . __DIR__ . "/default_site/Login/login.php?sessionExpired=1", true);
+                }
+            } else {
+                // Login expired
+                throw new Exception("Unauthenticated admin user found");
+            }
+        } catch (Exception $e) {
+            echo $e;
+            header("Location: " . __DIR__ . "/default_site/Login/login.php?sessionExpired=1", true);
+        }
+    }
 ?>

@@ -9,8 +9,15 @@
 	$currentPage = basename($_SERVER['PHP_SELF']);
 	include('../default_header.php');
 ?>
-	
+
 <div class="main">
+	<?php 
+		// Expired session
+		if( $_GET["sessionExpired"] == 1 ) {
+			echo "Your session has expired. Please login again.";
+		}
+	?>
+
 	<form action="process_login.php" method="post">
 		<table>
 			<tr>

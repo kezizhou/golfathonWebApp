@@ -8,6 +8,7 @@
 	$strPageTitle = "Add Corporate Sponsorship";
 	$currentPage = basename($_SERVER['PHP_SELF']);
 	include('../admin_header.php');
+	checkLoginExpire();
 ?>
 		
 <div class="main">

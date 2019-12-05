@@ -3,9 +3,7 @@
 <!-- Abstract: Default Home Page												  	  -->
 <!-- -------------------------------------------------------------------------------- -->
 
-<?php
-	session_start();
-	
+<?php	
 	// Header
 	$strPageTitle = "Home";
 	$currentPage = basename($_SERVER['PHP_SELF']);

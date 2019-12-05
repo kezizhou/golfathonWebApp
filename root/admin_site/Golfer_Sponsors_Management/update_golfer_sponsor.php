@@ -8,6 +8,7 @@
 	$strPageTitle = "Update Golfer-Sponsor Info";
 	$currentPage = basename($_SERVER['PHP_SELF']);
 	include('../admin_header.php');
+	checkLoginExpire();
 
 	// Body
 	// Display selected sponsor from TSponsors

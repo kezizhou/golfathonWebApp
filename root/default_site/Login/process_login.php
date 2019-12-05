@@ -4,6 +4,8 @@
 <!-- -------------------------------------------------------------------------------- -->
 
 <?php
+	session_start();
+
 	// Header
 	$strPageTitle = "Login";
 	$currentPage = basename($_SERVER['PHP_SELF']);
@@ -13,7 +15,6 @@
 <div class="main">
 	<?php
 		require('custom_exceptions.php');
-		$_SESSION["validLogin"] = false;
 		$strLoginID = $_POST["txtID"];
 		$strPassword = $_POST["txtPassword"];
 	
@@ -27,9 +28,7 @@
 						$hashedPassword = $row["strPassword"];
 						// Hashed password matches
 						if( password_verify($strPassword, $hashedPassword) ) {
-							$_SESSION["validLogin"] = true;
-							$_SESSION["intEventCoordinatorID"] = $row["intEventCoordinatorID"];
-							
+							$_SESSION['loginTime'] = time();
 							// PHP permanent URL redirection
 							header("Location: ../../admin_site/Admin_Home/admin_home.php", true, 301);
 							exit();
@@ -40,14 +39,12 @@
 					}
 				// Invalid ID
 				} elseif( mysqli_num_rows($result) == 0 ) {
-					$_SESSION["validLogin"] = false;
 					throw new InvalidCredentialException();
 				}
 			} else{
 				throw new Exception( "ERROR: $checkCredentials" );
 			}
 		} catch (InvalidCredentialException $e) {
-			$_SESSION["validLogin"] = false;
 			echo $e->errorMessage();
 		}
 		
