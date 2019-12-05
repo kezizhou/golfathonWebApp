@@ -69,6 +69,20 @@ Resources:
             - "logs:PutLogEvents"
             Resource: 
               - "*"
+          - Sid: "S3ListGetPermissions"
+            Effect: "Allow"
+            Action:
+            - "s3:ListBucket"
+            - "s3:GetBucketLocation"
+            - "s3:ListAllMyBuckets"
+            Resource:
+              - "*"
+          - Sid: "S3GetPermissions"
+            Effect: "Allow"
+            Action:
+            - "s3:GetObject"
+            Resource:
+              - "arn:aws:s3:::golfathon-web-app-dev/root/*"
   golfathonInstProfile:
     Type: AWS::IAM::InstanceProfile
     Properties: 

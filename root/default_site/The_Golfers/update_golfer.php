@@ -10,7 +10,7 @@
 	include('../default_header.php');
 
 	// Display selected golfer from TGolfers
-	$sql = "SELECT TG.strFirstName, TG.strLastName, TG.strAddress, TG.strCity, TG.strZip, TG.strPhone, Tg.strEmail, TG.intShirtSizeID, TG.intGenderID, TG.intStateID, TTC.intTeamandClubID
+	$sql = "SELECT TG.strFirstName, TG.strLastName, TG.strAddress, TG.strCity, TG.strZip, TG.strPhone, TG.strEmail, TG.intShirtSizeID, TG.intGenderID, TG.intStateID, TTC.intTeamandClubID
 			FROM TGolfers AS TG JOIN TEventGolfers AS TEG
 				ON TG.intGolferID = TEG.intGolferID
 			JOIN TEventGolferTeamandClubs AS TEGT

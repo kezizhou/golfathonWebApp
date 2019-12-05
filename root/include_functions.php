@@ -9,7 +9,7 @@
 
         if( !isset($conn) ) {
             // Connect to MySQL
-            $config = parse_ini_file(dirname(__DIR__) . '\private\config.ini');
+            $config = parse_ini_file(dirname(__DIR__) . '/private/config.ini');
 
             // Create connection
             $conn = mysqli_connect($config['servername'], $config['username'], $config['password'], $config['dbname']);

@@ -10,7 +10,7 @@
 		
 		<meta charset=utf-8>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6/html5shiv.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="../../../root/styles/home.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="/styles/home.css" media="screen">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Salsa&display=swap">
 		<?php 
 			if( isset($strCustomCSS) ) {
@@ -52,7 +52,7 @@
 		</div>
 	
 		<?php
-			$rootSite = "/PHP-ZhouK/contents/week-12/root/default_site"
+			$rootSite = "/default_site"
 		?>
 
 		<div class="navbar">

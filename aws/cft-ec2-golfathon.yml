@@ -61,14 +61,6 @@ Resources:
       ImageId: !Ref AMIID
       InstanceType: t2.micro
       KeyName: golfathon-keypair
-      BlockDeviceMappings: 
-      - DeviceName: "/dev/sda1"
-        Ebs:
-          DeleteOnTermination: "false"
-          Encrypted: true
-          KmsKeyId: 878b8e99-4ac0-4545-8815-5fa221971885
-          VolumeSize: "10"
-          VolumeType: "gp2"
       IamInstanceProfile: "golfathon-role"
       SubnetId: !Ref SubnetID
       SecurityGroupIds:
