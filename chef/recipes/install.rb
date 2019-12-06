@@ -6,6 +6,7 @@
 
 include_recipe 'phpInstall::default'
 
-execute 'Run Docker container' do
-    command "docker run –d –p 80:80 golfathonWebApp"
+execute 'Get files from S3' do
+    command "aws s3 cp s3:://golfathon-web-app-dev/ #{node['phpInstall']['htmlRootDir'l} --recursive"
+    not_if { ::File.exist?("#{node['phpInstall']['htmlRootDir'l}/default_site") }
 end
