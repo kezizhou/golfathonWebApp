@@ -23,7 +23,7 @@ Resources:
             Action:
               - "sts:AssumeRole"
       RoleName: golfathon-role
-  golfathonEC2Policy:
+  golfathonIAMPolicy:
     Type: AWS::IAM::Policy
     Properties:
       PolicyName: golfathon-policy

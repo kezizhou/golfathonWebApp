@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: "2010-09-09"
-Description: "EC2 Instance, EBS Volume, and Security Group for Golfathon Web App"
+Description: "EC2 Instance and Security Group for Golfathon Web App"
 Parameters:
   stackName:
     Default: "cft-ec2-golfathon-dev"
