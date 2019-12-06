@@ -8,3 +8,5 @@ version '0.1.0'
 chef_version '>= 13.0'
 issues_url 'https://github.com/kezizhou/golfathonWebApp'
 source_url 'https://github.com/kezizhou/golfathonWebApp'
+
+depends 'docker'

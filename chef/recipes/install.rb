@@ -6,6 +6,11 @@
 
 include_recipe 'phpInstall::default'
 
+# Install Docker
+docker_service 'default' do
+    action [:create, :start]
+end
+
 execute 'Run Docker container' do
-    command "docker run –d –p 80:80 golfathonWebApp"
+    command "docker run –d –p 8080:80 golfathonWebApp"
 end

@@ -6,10 +6,6 @@ USER root
 RUN yum update -y \
     yum install httpd24 php70 mysql56-server php70-mysqlnd
 
-# Start Apache web server
-RUN service httpd start \
-    chkconfig httpd on
-
 # Copy files to container
 COPY root /var/www/html
 
@@ -19,6 +15,10 @@ RUN group add dev \
     chgrp -R dev-golfathon /var/www/html \
     chmod -R 2774 /var/www/html
 
+# Start Apache web server
+ENTRYPOINT ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+
 EXPOSE 80
+EXPOSE 443
 
 USER golfathonUser
