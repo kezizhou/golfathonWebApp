@@ -1,8 +1,7 @@
 #!groovy
 
 pipeline {
-    // No default agent
-    agent none
+    agent any
 
     environment {
         IMAGE_REPOSITORY="kezizhou"
@@ -11,51 +10,7 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
-            agent {
-                dockerfile {
-                    filename "Dockerfile"
-                }
-            }
-            options {
-                timeout(time: 5, unit: "MINUTES")
-            }
-            when {
-                beforeAgent true
-                anyof {
-                    // Push to master
-                    branch "master"
-                    // Pull request to master
-                    // changeRequest target: "master"
-                }
-            }
-            steps {
-                echo 'Building..'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('S3 Push') {
-            agent any
-            options {
-                timeout( time: 5, unit: "MINUTES")
-            }
-            when {
-                // Push to master
-                beforeAgent true
-                branch "master"
-            }
-            steps {
-                withCredentials([usernamePassword(credentialsID: 'AWSUser', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                    sh "aws s3 cp s3:://golfathon-web-app-dev/ /var/www/html --recursive"
-                }
-            }
-        }
         stage('Docker Image Push') {
-            agent any
             options {
                 timeout( time: 5, unit: "MINUTES")
             }
