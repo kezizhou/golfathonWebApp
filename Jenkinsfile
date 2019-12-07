@@ -15,7 +15,7 @@ pipeline {
                 branch "master"
             }
             steps {
-                withCredentials([usernamePassword(credentialsID: 'AWSUser', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsID: 'AWSJenkinsUser', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh "aws s3 cp s3:://golfathon-web-app-dev/ /var/www/html --recursive"
                 }
             }
