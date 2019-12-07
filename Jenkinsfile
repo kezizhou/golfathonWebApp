@@ -16,7 +16,7 @@ pipeline {
             when {
                 // Push to master
                 beforeAgent true
-                branch "master"
+                branch "docker"
             }
             steps {
                 withCredentials([usernamePassword(credentialsID: 'DockerUser', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
@@ -35,13 +35,13 @@ pipeline {
             when {
                 // Push to master
                 beforeAgent true
-                branch "master"
+                branch "docker"
             }
             steps {
                 withCredentials([usernamePassword(credentialsID: 'DockerUser', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh "docker login -u $USERNAME -p $PASSWORD"
                 }
-                sh "docker run –d –p 8080:80 $IMAGE_LOCATION"
+                sh "docker run –d –p 80:80 -p 443:443 $IMAGE_LOCATION"
             }
             post {
                 always {
