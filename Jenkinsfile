@@ -14,7 +14,7 @@ pipeline {
                 timeout( time: 5, unit: "MINUTES")
             }
             when {
-                // Push to master
+                // Push to docker branch
                 beforeAgent true
                 branch "docker"
             }
@@ -33,7 +33,7 @@ pipeline {
                 timeout( time: 5, unit: "MINUTES")
             }
             when {
-                // Push to master
+                // Push to docker branch
                 beforeAgent true
                 branch "docker"
             }
