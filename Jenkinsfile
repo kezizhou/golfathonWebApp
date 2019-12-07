@@ -19,7 +19,7 @@ pipeline {
                 branch "docker"
             }
             steps {
-                withCredentials([usernamePassword(credentialsID: 'DockerUser', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: 'DockerUser', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh "docker login -u $USERNAME -p $PASSWORD"
                 }
                 sh "docker build -t $IMAGE_LOCATION:$VERSION"
@@ -38,7 +38,7 @@ pipeline {
                 branch "docker"
             }
             steps {
-                withCredentials([usernamePassword(credentialsID: 'DockerUser', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: 'DockerUser', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh "docker login -u $USERNAME -p $PASSWORD"
                 }
                 sh "docker run –d –p 80:80 -p 443:443 $IMAGE_LOCATION"
