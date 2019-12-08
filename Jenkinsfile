@@ -14,8 +14,8 @@ pipeline {
                 branch "master"
             }
             steps {
-                withCredentials([usernamePassword(credentialsId: 'AWSJenkinsUser', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                    sh "aws s3 cp s3:://golfathon-web-app-dev/ /var/www/html --recursive"
+                withAWS(region: 'us-east-1', credentials: 'AWSJenkinsUser') {
+                    s3Upload(file: '/root/', bucket: 'golfathon-web-app-dev', path: '/')
                 }
             }
         }
