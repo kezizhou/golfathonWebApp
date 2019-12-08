@@ -15,7 +15,7 @@ pipeline {
             }
             steps {
                 withAWS(region: 'us-east-1', credentials: 'AWSJenkinsUser') {
-                    s3Upload(file: 'root/', bucket: 'golfathon-web-app-dev', path: '/')
+                    s3Upload(file: 'root/', bucket: 'golfathon-web-app-dev')
                 }
             }
         }
