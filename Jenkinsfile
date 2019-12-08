@@ -14,10 +14,9 @@ pipeline {
                 branch "dev"
             }
             steps {
-                // withAWS(region: 'us-east-1', credentials: 'AWSJenkinsUser') {
-                //     s3Upload(file: '/root/', bucket: 'golfathon-web-app-dev', path: '/')
-                // }
-                sh "ls -la"
+                withAWS(region: 'us-east-1', credentials: 'AWSJenkinsUser') {
+                    s3Upload(file: 'root/', bucket: 'golfathon-web-app-dev', path: '/')
+                }
             }
         }
     }
