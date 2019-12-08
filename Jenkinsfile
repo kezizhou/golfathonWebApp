@@ -22,7 +22,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'DockerUser', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh "docker login -u $USERNAME -p $PASSWORD"
                 }
-                sh "docker build -t $IMAGE_LOCATION:$VERSION"
+                sh "docker build -t $IMAGE_LOCATION:$VERSION ."
                 sh "docker push $IMAGE_LOCATION:$VERSION"
                 sh "docker tag $IMAGE_LOCATION:$VERSION $IMAGE_LOCATION:latest"
                 sh "docker push $IMAGE_LOCATION:latest"
