@@ -12,6 +12,7 @@ There are 2 methods that could be used to automate this application, which have 
 ### 1. Chef - "master" Branch
 This branch contains a sample Chef cookbook that could be used to set up this web app. This becomes advantageous for larger applications, since this allows for better automation of the server install and setup. Even if the server is damaged, Chef can run the cookbook and bring the server back to the desired state.
 In this method, the page can be viewed by going to the public DNS of the EC2 instance the server is running on. 
+!["master" Branch Diagram](diagrams/golfathonWebAppMaster.png)
 
 ### 2. Docker - "docker" Branch
 This branch contains a Dockerfile that is used to build a Docker image of the application. This Dockerfile installs Apache, PHP, and MySQL, and starts the Apache web server. It copies the PHP scripts and files from the repo to the container. This image can then be pulled from Docker Hub to the server(s). 
