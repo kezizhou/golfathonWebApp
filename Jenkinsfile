@@ -11,7 +11,7 @@ pipeline {
             when {
                 // Push to master
                 beforeAgent true
-                branch "dev"
+                branch "master"
             }
             steps {
                 withAWS(region: 'us-east-1', credentials: 'AWSJenkinsUser') {
