@@ -42,7 +42,7 @@ pipeline {
                     sh "docker login -u $USERNAME -p $PASSWORD"
                 }
                 // sh "docker run –dit –p 80:80 -p 443:443 $IMAGE_LOCATION:$VERSION"
-                sh "docker run –dit –p 80:80 -p 443:443 $IMAGE_LOCATION:$VERSION -D FOREGROUND"
+                sh "docker run –p 80:80 -p 443:443 $IMAGE_LOCATION:$VERSION -D FOREGROUND"
             }
             post {
                 always {
