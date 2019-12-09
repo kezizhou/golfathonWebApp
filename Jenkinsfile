@@ -20,7 +20,6 @@ pipeline {
             }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'DockerUser', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                    sh "whoami"
                     sh "docker login -u $USERNAME -p $PASSWORD"
                 }
                 sh "docker build -t $IMAGE_LOCATION:$VERSION ."
@@ -42,7 +41,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'DockerUser', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh "docker login -u $USERNAME -p $PASSWORD"
                 }
-                sh "docker run –d –p 80:80 -p 443:443 $IMAGE_LOCATION"
+                sh "docker run –dit –p 80:80 $IMAGE_LOCATION"
             }
             post {
                 always {
