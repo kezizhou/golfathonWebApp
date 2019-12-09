@@ -2,7 +2,7 @@ FROM amazonlinux
 
 # Install PHP and MySQL
 RUN yum update -y \
-    yum install httpd24 php70 mysql56-server php70-mysqlnd -y
+    yum install httpd php70 mysql56-server php70-mysqlnd -y
 
 # Copy files to container
 COPY root /var/www/html
