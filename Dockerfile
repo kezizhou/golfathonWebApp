@@ -13,7 +13,7 @@ COPY root /var/www/html
 #     find /var/www/html -type f -exec chmod g+r {} + 
 
 # Start Apache web server
-# CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
 
 EXPOSE 80
 EXPOSE 443
