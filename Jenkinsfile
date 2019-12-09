@@ -41,8 +41,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'DockerUser', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh "docker login -u $USERNAME -p $PASSWORD"
                 }
-                // sh "docker run –dit –p 80:80 -p 443:443 $IMAGE_LOCATION:$VERSION"
-                sh "docker run –p 80:80 -p 443:443 $IMAGE_LOCATION:$VERSION -D FOREGROUND"
+                sh "docker run -d –p 80:80 -p 443:443 $IMAGE_LOCATION:$VERSION"
             }
             post {
                 always {

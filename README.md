@@ -20,6 +20,8 @@ The Jenkinsfile in this branch pushes the PHP files from the repo to an S3 bucke
 This branch contains a Dockerfile that is used to build a Docker image of the application. This Dockerfile installs Apache, PHP, and MySQL, and starts the Apache web server. It copies the PHP scripts and files from the repo to the container. This image can then be pulled from Docker Hub to the server(s). 
 In this method, the Docker container is exposed on ports 80 and 443, and the page can be viewed by going to http://localhost:80 or http://localhost:443.
 
+!["docker" Branch Diagram](diagrams/golfathonWebAppDocker.png)
+
 ### Enhancements and Best Practices
 This project started as a basic web app that allowed for user interaction to submit data to a MySQL database. Since then, some enhancements have been made to follow best practices and to add features:
 * Best Practices:
