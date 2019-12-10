@@ -1,9 +1,9 @@
 FROM amazonlinux
 
 # Install PApache and PHP
-RUN yum update -y \
-    yum install -y httpd 
-RUN amazon-linux-extras install -y php7.3 
+RUN yum- y update \
+    yum -y install httpd 
+RUN amazon-linux-extras -y install php7.3 
 
 # Copy files to container
 COPY root /var/www/html
