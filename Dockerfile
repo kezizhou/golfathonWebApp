@@ -10,7 +10,7 @@ RUN amazon-linux-extras install php7.3 -y
 COPY root /var/www/html
 
 # Start Apache web server
-CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+# CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
 
 EXPOSE 80
 EXPOSE 443
