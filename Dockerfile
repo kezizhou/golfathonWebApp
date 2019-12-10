@@ -1,7 +1,7 @@
 FROM amazonlinux
 
 # Install PApache and PHP
-RUN yum- y update \
+RUN yum -y update \
     yum -y install httpd 
 RUN amazon-linux-extras -y install php7.3 
 
