@@ -3,10 +3,8 @@ FROM php:7.4.0-apache
 # Copy files to container
 COPY root /var/www/html
 
-# Create Apache group permissions
-RUN chgrp -R apache /var/www/html
-RUN find /var/www/html -type d -exec chmod g=rwxs "{}" +
-RUN find /var/www/html -type f -exec chmod g=rws "{}" +
+# Apache user permissions
+RUN chmod 755 -R /var/www/html
 
 # Start Apache web server
 CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
