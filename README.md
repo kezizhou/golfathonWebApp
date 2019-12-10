@@ -5,7 +5,7 @@ golfathonWebApp is a web application for a Golfathon Event. This application fea
 This web app utilizes AWS for infrastructure and security. The "aws" folder contains CloudFormation templates used to setup this application. 
 
 ### Jenkins
-The Jenkinsfile allows for the automated build and push of images to Docker Hub, as well as pushing files to S3.
+The Jenkinsfiles allow for the automated build and push of images to Docker Hub, as well as pushing files to S3.
 
 There are 2 methods that could be used to automate this application, which have been separated by Git branches:
 

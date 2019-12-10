@@ -15,6 +15,7 @@ pipeline {
             }
             when {
                 // Push to docker branch
+                // GitHub webook "Payload URL" format: http://<EC2 Public DNS>:8080/github-webhook/
                 beforeAgent true
                 branch "docker"
             }
