@@ -1,4 +1,9 @@
-FROM php:7.4.0-apache
+FROM amazonlinux
+
+# Install Apache and PHP
+RUN yum -y update
+RUN yum -y install httpd 
+RUN amazon-linux-extras install php7.3 
 
 # Copy files to container
 COPY root /var/www/html
@@ -7,10 +12,10 @@ COPY root /var/www/html
 RUN chmod 755 -R /var/www/html
 
 # Disable httpd warning
-RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+RUN echo "ServerName localhost" >> /etc/httpd/conf/httpd.conf
 
 # Start Apache web server
-CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
 
 EXPOSE 80
 EXPOSE 443
