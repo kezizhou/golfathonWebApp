@@ -8,6 +8,9 @@ RUN amazon-linux-extras install php7.3
 # Copy files to container
 COPY root /var/www/html
 
+# Disable httpd warning
+RUN echo "ServerName localhost" >> /etc/httpd/conf/httpd.conf
+
 # Start Apache web server
 CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
 
