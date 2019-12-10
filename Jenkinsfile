@@ -5,7 +5,7 @@ pipeline {
 
     environment {
         IMAGE_LOCATION="kezizhou/golfathon-web-app"
-        VERSION="1.0.0"
+        VERSION="1.0.1"
     }
 
     stages {
