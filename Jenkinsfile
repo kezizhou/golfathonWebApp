@@ -27,22 +27,6 @@ pipeline {
                 sh "docker tag $IMAGE_LOCATION:$VERSION $IMAGE_LOCATION:latest"
                 sh "docker push $IMAGE_LOCATION:latest"
             }
-        }
-        stage('Start Server') {
-            options {
-                timeout( time: 5, unit: "MINUTES")
-            }
-            when {
-                // Push to docker branch
-                beforeAgent true
-                branch "docker"
-            }
-            steps {
-                withCredentials([usernamePassword(credentialsId: 'DockerUser', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                    sh "docker login -u $USERNAME -p $PASSWORD"
-                }
-                sh "docker run -d –p 80:80 -p 443:443 $IMAGE_LOCATION:latest"
-            }
             post {
                 always {
                     // Clean images
