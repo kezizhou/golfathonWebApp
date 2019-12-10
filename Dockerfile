@@ -19,3 +19,6 @@ CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
 
 EXPOSE 80
 EXPOSE 443
+
+# Non-privileged user
+USER 1000
