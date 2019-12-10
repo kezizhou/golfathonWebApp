@@ -3,7 +3,7 @@ FROM amazonlinux
 # Install Apache and PHP
 RUN yum -y update \
     yum -y install httpd 
-RUN amazon-linux-extras -y install php7.3 
+RUN amazon-linux-extras install php7.3 
 
 # Copy files to container
 COPY root /var/www/html
