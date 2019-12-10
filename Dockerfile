@@ -1,6 +1,6 @@
 FROM amazonlinux
 
-# Install PApache and PHP
+# Install Apache and PHP
 RUN yum -y update \
     yum -y install httpd 
 RUN amazon-linux-extras -y install php7.3 
@@ -9,7 +9,7 @@ RUN amazon-linux-extras -y install php7.3
 COPY root /var/www/html
 
 # Start Apache web server
-CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+# CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
 
 EXPOSE 80
 EXPOSE 443
