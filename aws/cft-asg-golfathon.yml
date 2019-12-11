@@ -47,6 +47,16 @@ Resources:
             Tags:      
             - Key: Name
               Value: "golfathonEC2Dev"
+        UserData:
+          Fn::Base64:
+            !Join
+              - ' '
+              - - "#!/bin/bash"
+                - "amazon-linux-extras install docker"
+                - "service docker start"
+                - "usermod -a -G docker ec2-user"
+                - "chkconfig docker on"
+                - "yum install -y git"
   golfathonASGDev:
     Type: AWS::AutoScaling::AutoScalingGroup
     Properties:

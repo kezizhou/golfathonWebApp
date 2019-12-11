@@ -14,11 +14,11 @@ RUN chmod 755 -R /var/www/html
 # Disable httpd warning
 RUN echo "ServerName localhost" >> /etc/httpd/conf/httpd.conf
 
+# Non-privileged user
+USER 1000
+
 # Start Apache web server
 CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
 
 EXPOSE 80
 EXPOSE 443
-
-# Non-privileged user
-USER 1000
