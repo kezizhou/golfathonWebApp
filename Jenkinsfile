@@ -47,6 +47,7 @@ pipeline {
                 branch "docker"
             }
             steps {
+                sh "mkdir /var/www/private"
                 withCredentials([file(credentialsId: 'DatabaseUser', variable: 'configFile')]) {
                     sh "cp \$configFile /var/www/private/config.ini"
                 }
