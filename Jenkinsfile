@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Docker Image Push') {
             options {
-                timeout( time: 10, unit: "MINUTES")
+                timeout( time: 10, unit: "MINUTES" )
             }
             when {
                 // Push to docker branch
@@ -34,6 +34,20 @@ pipeline {
                     sh "docker rmi $IMAGE_LOCATION:$VERSION"
                     sh "docker rmi $IMAGE_LOCATION:latest"
                     sh "docker image prune -f"
+                }
+            }
+        }
+        stage('Add Folder') {
+            options {
+                timeout( time: 5, unit: "MINUTES" )
+            }
+            when {
+                // Push to docker branch
+                beforeAgent true
+            }
+            steps {
+                withCredentials([file(credentialsId: 'DatabaseUser', variable: 'configFile')]) {
+                    sh "cp \$configFile /var/www/private/config.ini"
                 }
             }
         }
