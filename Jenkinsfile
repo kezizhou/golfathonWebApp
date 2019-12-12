@@ -44,6 +44,7 @@ pipeline {
             when {
                 // Push to docker branch
                 beforeAgent true
+                branch "docker"
             }
             steps {
                 withCredentials([file(credentialsId: 'DatabaseUser', variable: 'configFile')]) {
