@@ -14,13 +14,13 @@ This branch contains a sample Chef cookbook that could be used to set up this we
 In this method, the page can be viewed by going to the public DNS of the EC2 instance the server is running on. 
 The Jenkinsfile in this branch pushes the PHP files from the repo to an S3 bucket.
 
-!["master" Branch Diagram](diagrams/golfathonWebAppMaster.png)
+!["master" Branch Diagram](documentation/diagrams/golfathonWebAppMaster.png)
 
 ### 2. Docker - "docker" Branch
 This branch contains a Dockerfile that is used to build a Docker image of the application. This Dockerfile installs Apache, PHP, and MySQL, and starts the Apache web server. It copies the PHP scripts and files from the repo to the container. This image can then be pulled from Docker Hub to the server(s). 
 In this method, the Docker container is exposed on ports 80 and 443, and the page can be viewed by going to http://localhost:80 or http://localhost:443.
 
-!["docker" Branch Diagram](diagrams/golfathonWebAppDocker.png)
+!["docker" Branch Diagram](documentation/diagrams/golfathonWebAppDocker.png)
 
 ### Enhancements and Best Practices
 This project started as a basic web app that allowed for user interaction to submit data to a MySQL database. Since then, some enhancements have been made to follow best practices and to add features:
@@ -33,3 +33,7 @@ This project started as a basic web app that allowed for user interaction to sub
     * The charConvert() function was created to guard against XSS attacks, and converts special characters to HTML entities anytime user input is output to the page.
 * Enhancements:
     * A 60 minute session timeout was added to the admin page, which automatically redirects the user back to the login.php along with a timeout message upon expiration. 
+
+### Demonstration
+Default Page:
+!["Default Page Demo"](documentation/demos/defaultPageDemo.gif)

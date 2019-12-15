@@ -37,21 +37,5 @@ pipeline {
                 }
             }
         }
-        stage('Add Folder') {
-            options {
-                timeout( time: 5, unit: "MINUTES" )
-            }
-            when {
-                // Push to docker branch
-                beforeAgent true
-                branch "docker"
-            }
-            steps {
-                sh "mkdir /var/www/private"
-                withCredentials([file(credentialsId: 'DatabaseUser', variable: 'configFile')]) {
-                    sh "cp \$configFile /var/www/private/config.ini"
-                }
-            }
-        }
     }
 }

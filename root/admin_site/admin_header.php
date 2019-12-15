@@ -75,7 +75,7 @@
 								echo "active";
 								break;
 						}
-						?>" class="dropBtn"> Corporate Sponsorship Management 
+						?> dropBtn"> Corporate Sponsorship Management 
 					<i class="fa fa-caret-down"></i>
 				</button>
 				
@@ -114,6 +114,19 @@
 			</div>
 		</div>
 			
+		<a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="responsiveNavbar()">&#9776;</a>
+
+		<script type="text/javascript"> 
+			function responsiveNavbar() {
+				var navbar = document.getElementById("navbar");
+				if (navbar.className === "navbar") {
+					navbar.className += " responsive";
+				} else {
+					navbar.className = "navbar";
+				}
+			}
+		</script>
+
 	</body>
 	
 </html>
