@@ -14,8 +14,10 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Salsa&display=swap" >
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<?php 
-			if( isset($strCustomCSS) ) {
-				echo "<link rel='stylesheet' type='text/css' href='" . $strCustomCSS . "' media='screen'>";
+			if( isset($astrCustomCSS) ) {
+				foreach( $astrCustomCSS as $strCustomCSS ) {
+					echo "<link rel='stylesheet' type='text/css' href='" . $strCustomCSS . "' media='screen'>";
+				}
 			}
 		?>
 		
@@ -75,7 +77,7 @@
 								echo "active";
 								break;
 						}
-						?>" class="dropBtn"> Corporate Sponsorship Management 
+						?> dropBtn"> Corporate Sponsorship Management 
 					<i class="fa fa-caret-down"></i>
 				</button>
 				
@@ -114,6 +116,19 @@
 			</div>
 		</div>
 			
+		<a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="responsiveNavbar()">&#9776;</a>
+
+		<script type="text/javascript"> 
+			function responsiveNavbar() {
+				var navbar = document.getElementById("navbar");
+				if (navbar.className === "navbar") {
+					navbar.className += " responsive";
+				} else {
+					navbar.className = "navbar";
+				}
+			}
+		</script>
+
 	</body>
 	
 </html>

@@ -7,7 +7,7 @@
 	// Header
 	$strPageTitle = "Team Statistics";
 	$currentPage = basename($_SERVER['PHP_SELF']);
-	$strCustomCSS = "../../styles/statistics.css";
+	$astrCustomCSS = array("../../styles/responsive_table.css", "../../styles/team_statistics.css", "../../styles/statistics.css");
 	include('../default_header.php');
 
 	// Body
@@ -47,28 +47,34 @@
 				
 		if( $result = mysqli_query($conn, $sql) ){
 			if( mysqli_num_rows($result) > 0 ) { ?>
-				<table border=1>
-					<tr>
-						<th> Team </th>
-						<th> Total Donations </th>
-						<th> See the Donors </th>
-					</tr>
-				<?php 
-				while( $row = mysqli_fetch_array($result) ) { 
-					if( $row['dblTotalPledges'] >= 2000 ) { ?>
-						<tr class='highDonations'>
-				<?php
-					} else { ?>
+				<div id="divTable">
+					<table border=1>
+						<thead>
 						<tr>
-				<?php
+							<th> Team </th>
+							<th> Total Donations </th>
+							<th> See the Donors </th>
+						</tr>
+						</thead>
+						<tbody>
+					<?php 
+					while( $row = mysqli_fetch_array($result) ) { 
+						if( $row['dblTotalPledges'] >= 2000 ) { ?>
+							<tr class='highDonations'>
+					<?php
+						} else { ?>
+							<tr>
+					<?php
+						} ?>
+							<td> <?php echo $row['strGender'] . " " . $row['strTypeofTeam'] . " " . $row['strLevelofTeam']; ?> </td>
+							<td> <?php echo "$" . $row['dblTotalPledges']; ?> </td>
+							<td id="normalWeight"> <a href="team_donors.php?intTeamandClubID=<?php echo $row['intTeamandClubID']; ?>&intEventID=<?php echo $intCurrentEventID; ?>"> Donor List </a></td>
+						</tr>
+						</tbody>
+					<?php
 					} ?>
-						<td> <?php echo $row['strGender'] . " " . $row['strTypeofTeam'] . " " . $row['strLevelofTeam']; ?> </td>
-						<td> <?php echo "$" . $row['dblTotalPledges']; ?> </td>
-						<td id="normalWeight"> <a href="team_donors.php?intTeamandClubID=<?php echo $row['intTeamandClubID']; ?>&intEventID=<?php echo $intCurrentEventID; ?>"> Donor List </a></td>
-					</tr>
-				<?php
-				} ?>
-				</table>
+					</table>
+				</div>
 			
 				<?php
 				// Free result set

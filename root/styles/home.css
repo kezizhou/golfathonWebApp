@@ -34,55 +34,55 @@
 
 .navbar-right {
 	float: right;
-	border-left:1px solid #555;
+	border-left: 1px solid #555;
 }
 
 .dropdown {
-  float: left;
-  overflow: hidden;
+	float: left;
+	overflow: hidden;
 }
 
 .dropdown .dropBtn {
-  font-size: 17px;    
-  border: none;
-  outline: none;
-  color: black;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
+	font-size: 17px;    
+	border: none;
+	outline: none;
+	color: black;
+	padding: 14px 16px;
+	background-color: inherit;
+	font-family: inherit;
+	margin: 0;
 }
 
 .dropContent {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
 }
 
 .dropContent a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
+	float: none;
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left;
 }
 
 .topnav a:hover, .dropdown:hover .dropBtn {
-  background-color: #555;
-  color: white;
+	background-color: #555;
+	color: white;
 }
 
 .dropContent a:hover {
-  background-color: #ddd;
-  color: black;
+	background-color: #ddd;
+	color: black;
 }
 
 .dropdown:hover .dropContent {
-  display: block;
+	display: block;
 }
 
 .dropdown button:not(.active) {
@@ -133,12 +133,66 @@ body {
 }
 
 input[type="submit"] {
-  font-size: 15px;    
-  border: none;
-  outline: none;
-  color: white;
-  padding: 10px;
-  background-color: #555;
-  margin-top: 5px;
-  cursor: pointer;
+	font-size: 15px;    
+	border: none;
+	outline: none;
+	color: white;
+	padding: 10px;
+	background-color: #555;
+	margin-top: 5px;
+	cursor: pointer;
+}
+
+.navbar .icon {
+	display: none;
+  }
+  
+/* Responsive Design Navbar */
+@media screen and (max-width: 1170px) {
+	.navbar a:not(.active), .dropdown .dropBtn:not(.active) {
+		display: none;
+	}
+	.navbar-right {
+		float: left;
+	}
+	.navbar a.icon {
+		float: right;
+		display: block;
+	} 
+	.dropContent .dropBtn.active {
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+	
+	/* Icon was clicked */
+	.navbar.responsive {
+		position: relative;
+	}
+	.navbar.responsive .icon {
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+	.navbar.responsive a {
+		float: none;
+		display: block;
+		text-align: left;
+	}
+	.navbar.responsive .dropdown {
+		float: none;
+	}
+	.navbar.responsive .dropContent {
+		position: relative;
+	}
+	.navbar.responsive .navbar-right {
+		float: none;
+		text-align: left;
+		border-left: none;
+	}
+	.navbar.responsive .dropdown .dropBtn {
+		display: block;
+		width: 100%;
+		text-align: left;
+	}
 }
