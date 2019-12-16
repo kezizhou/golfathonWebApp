@@ -9,13 +9,13 @@ RUN amazon-linux-extras install php7.3
 COPY root /var/www/html
 
 # Apache user permissions
-RUN chmod 755 -R /var/www/html
+# RUN chmod 755 -R /var/www/html
 
 # Disable httpd warning
 RUN echo "ServerName localhost" >> /etc/httpd/conf/httpd.conf
 
 # Non-privileged user
-USER 1000
+# USER 1000
 
 # Start Apache web server
 CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
