@@ -34,7 +34,7 @@
 				ORDER BY strLastName";
 		if( $result = mysqli_query($conn, $sql) ) {
 			if( mysqli_num_rows($result) > 0 ) { ?>
-				<div style="overflow-x:auto;">
+				<div id="divTable">
 					<table border=1>
 						<thead>
 						<tr>

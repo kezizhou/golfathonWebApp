@@ -1,13 +1,13 @@
 # golfathonWebApp
 golfathonWebApp is a web application for a Golfathon Event. This application features enhancements that allow for increased security against XSS attacks, hashed password validation, and session timeout.
 
-Sections:  
+## Sections:  
 [AWS](#aws)  
 [Jenkins](#jenkins)  
 [Chef "master" Branch](#1-chef---master-branch-master-branch)  
 [Docker "docker" Branch](#2-docker---docker-branch-docker-branch)  
 [Enhancements and Best Practices](#enhancements-and-best-practices)  
-[Demonstrations](#demonstrations)
+[Demonstrations of Website](#demonstrations-of-website)
 
 ### AWS
 This web app utilizes AWS for infrastructure and security. The "aws" folder contains CloudFormation templates used to setup this application.  
@@ -49,7 +49,7 @@ This project started as a basic web app that allowed for user interaction to sub
     * Adjustments were made to the navigation bar and tables to accomodate mobile devices  
 [Back to Top](#golfathonWebApp)
 
-### Demonstrations
+### Demonstrations of Website
 Default Page:
 !["Default Page Demo"](documentation/demos/defaultPageDemo.gif)
 
