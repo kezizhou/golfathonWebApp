@@ -7,6 +7,7 @@
 	// Header
 	$strPageTitle = "Manage Corporate Sponsorships";
 	$currentPage = basename($_SERVER['PHP_SELF']);
+	$astrCustomCSS = array("../../styles/responsive_table.css", "../../styles/manage_corp_sponsorships.css");
 	include('../admin_header.php');
 	checkLoginExpire();
 ?>
@@ -24,27 +25,32 @@
 				WHERE TECT.intEventID = $intCurrentEventID
 				GROUP BY TECT.intEventCorporateSponsorshipTypeID
 				ORDER BY TCT.strCorporateSponsorshipType";
-		if( $result = mysqli_query($conn, $sql) ){
-			if( mysqli_num_rows($result) > 0 ){ 
-	?>
-				<table border=1>
-					<tr>
-						<th>Edit Available Sponsorships</th>
-						<th>Corporate Sponsorship Type</th>
-						<th>Cost</th>
-						<th>Benefits</th>
-						<th># Available</th>
-					</tr>
-			<?php while( $row = mysqli_fetch_array($result) ){ ?>
-				<tr>
-					<td> <a href="update_corp_sponsorship.php?intEventCorporateSponsorshipTypeID= <?php echo $row['intEventCorporateSponsorshipTypeID'];?>"> Edit </a></td>
-					<td> <?php echo $row['strCorporateSponsorshipType'];?> </td>
-					<td> <?php echo "$" . $row['dblSponsorshipCost'];?> </td>
-					<td> <?php echo $row['strBenefits'];?> </td>
-					<td> <?php echo $row['intSponsorshipAvailable'];?> </td>
-				</tr>
-			<?php } ?>
-			</table>
+		if( $result = mysqli_query($conn, $sql) ) {
+			if( mysqli_num_rows($result) > 0 ) { ?>
+				<div style="overflow-x:auto;">
+					<table border=1>
+						<thead>
+						<tr>
+							<th>Edit Available Sponsorships</th>
+							<th>Corporate Sponsorship Type</th>
+							<th>Cost</th>
+							<th>Benefits</th>
+							<th># Available</th>
+						</tr>
+						</thead>
+				<?php while( $row = mysqli_fetch_array($result) ){ ?>
+					<tbody>
+						<tr>
+							<td> <a href="update_corp_sponsorship.php?intEventCorporateSponsorshipTypeID= <?php echo $row['intEventCorporateSponsorshipTypeID'];?>"> Edit </a></td>
+							<td> <?php echo $row['strCorporateSponsorshipType'];?> </td>
+							<td> <?php echo "$" . $row['dblSponsorshipCost'];?> </td>
+							<td> <?php echo $row['strBenefits'];?> </td>
+							<td> <?php echo $row['intSponsorshipAvailable'];?> </td>
+						</tr>
+						</tbody>
+				<?php } ?>
+					</table>
+				</div>
 	<?php
 			// Free result set
 			mysqli_free_result($result);

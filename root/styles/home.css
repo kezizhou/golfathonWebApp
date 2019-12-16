@@ -147,6 +147,7 @@ input[type="submit"] {
 	display: none;
   }
   
+/* Responsive Design Navbar */
 @media screen and (max-width: 1170px) {
 	.navbar a:not(.active), .dropdown .dropBtn:not(.active) {
 		display: none;

@@ -7,7 +7,7 @@
 	// Header
 	$strPageTitle = "Golfer Statistics";
 	$currentPage = basename($_SERVER['PHP_SELF']);
-	$strCustomCSS = "../../styles/statistics.css";
+	$astrCustomCSS = array("../../styles/responsive_table.css", "../../styles/golfer_statistics.css", "../../styles/statistics.css");
 	include('../default_header.php');
 			
 	// Get total number of golfers in current event
@@ -48,30 +48,36 @@
 
 		if( $result = mysqli_query($conn, $sql) ) {
 			if( mysqli_num_rows($result ) > 0) { ?>
-				<table border=1>
-					<tr>
-						<th>First Name</th>
-						<th>Last Name</th>
-						<th>Team</th>
-						<th>Total Donations</th>
-						<th>See the Donors</th>
-					</tr>
-				<?php
-				while($row = mysqli_fetch_array($result)){ 
-					if ($row['dblTotalPledges'] >= 1000) {
-						echo "<tr class='highDonations'>";
-					} else {
-						echo "<tr>";
-					} ?>
-					<td> <?php echo charConvert($row['strFirstName']); ?> </td>
-					<td> <?php echo charConvert($row['strLastName']); ?> </td>
-					<td> <?php echo $row['strGender'] . " " . $row['strTypeofTeam'] . " " . $row['strLevelofTeam']; ?> </td>
-					<td> <?php echo "$" . $row['dblTotalPledges']; ?> </td>
-					<td id="normalWeight"> <a href="golfer_donors.php?intGolferID=<?php echo $row['intGolferID'];?>&intEventID=<?php echo $intCurrentEventID; ?>"> Donor List </a></td>
-					</tr>
-				<?php
-				} ?>
-			</table>
+				<div style="overflow-x:auto;">
+					<table border=1>
+						<thead>
+						<tr>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Team</th>
+							<th>Total Donations</th>
+							<th>See the Donors</th>
+						</tr>
+						</thead>
+						<tbody>
+					<?php
+						while( $row = mysqli_fetch_array($result) ) { 
+							if( $row['dblTotalPledges'] >= 1000) {
+								echo "<tr class='highDonations'>";
+							} else {
+								echo "<tr>";
+							} ?>
+								<td> <?php echo charConvert($row['strFirstName']); ?> </td>
+								<td> <?php echo charConvert($row['strLastName']); ?> </td>
+								<td> <?php echo $row['strGender'] . " " . $row['strTypeofTeam'] . " " . $row['strLevelofTeam']; ?> </td>
+								<td> <?php echo "$" . $row['dblTotalPledges']; ?> </td>
+								<td id="normalWeight"> <a href="golfer_donors.php?intGolferID=<?php echo $row['intGolferID'];?>&intEventID=<?php echo $intCurrentEventID; ?>"> Donor List </a></td>
+							</tr>
+							</tbody>
+						<?php
+						} ?>
+					</table>
+				</div>
 			<?php
 			// Free result set
 			mysqli_free_result($result);

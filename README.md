@@ -43,3 +43,6 @@ Admin Page:
 
 Sample Login Timeout Page:
 !["Login Timeout Screen"](documentation/demos/loginTimeout.png)
+
+Responsive Design for Mobile:
+!["Responsive Design for Mobile"](documentation/deos/responsiveMobile.png)

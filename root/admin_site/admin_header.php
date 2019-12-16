@@ -14,8 +14,10 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Salsa&display=swap" >
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<?php 
-			if( isset($strCustomCSS) ) {
-				echo "<link rel='stylesheet' type='text/css' href='" . $strCustomCSS . "' media='screen'>";
+			if( isset($astrCustomCSS) ) {
+				foreach( $astrCustomCSS as $strCustomCSS ) {
+					echo "<link rel='stylesheet' type='text/css' href='" . $strCustomCSS . "' media='screen'>";
+				}
 			}
 		?>
 		

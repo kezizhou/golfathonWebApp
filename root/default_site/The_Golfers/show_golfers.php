@@ -7,6 +7,7 @@
 	// Header
 	$strPageTitle = "The Golfers";
 	$currentPage = basename($_SERVER['PHP_SELF']);
+	$astrCustomCSS = array("../../styles/responsive_table.css", "../../styles/show_golfers.css");
 	include('../default_header.php');
 ?>
 		
@@ -33,36 +34,42 @@
 				ORDER BY strLastName";
 		if( $result = mysqli_query($conn, $sql) ) {
 			if( mysqli_num_rows($result) > 0 ) { ?>
-				<table border=1>
-					<tr>
-						<th>Edit Player Info</th>
-						<th>First Name</th>
-						<th>Last Name</th>
-						<th>Address</th>
-						<th>City</th>
-						<th>State</th>
-						<th>Zip Code</th>
-						<th>Phone</th>
-						<th>Email</th>
-						<th>Shirt Size</th>
-						<th>Team</th>
-					</tr>
+				<div style="overflow-x:auto;">
+					<table border=1>
+						<thead>
+						<tr>
+							<th>Edit Player Info</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Address</th>
+							<th>City</th>
+							<th>State</th>
+							<th>Zip Code</th>
+							<th>Phone</th>
+							<th>Email</th>
+							<th>Shirt Size</th>
+							<th>Team</th>
+						</tr>
+						</thead>
 			<?php while( $row = mysqli_fetch_array($result) ){ ?>
-				<tr>
-					<td> <a href="update_golfer.php?intGolferID= <?php echo $row['intGolferID'];?>"> Edit </a></td>
-					<td> <?php echo charConvert($row['strFirstName']);?> </td>
-					<td> <?php echo charConvert($row['strLastName']);?> </td>
-					<td> <?php echo charConvert($row['strAddress']);?> </td>
-					<td> <?php echo charConvert($row['strCity']);?> </td>
-					<td> <?php echo $row['strState'];?> </td>
-					<td> <?php echo charConvert($row['strZip']);?> </td>
-					<td> <?php echo charConvert($row['strPhone']);?> </td>
-					<td> <?php echo charConvert($row['strEmail']);?> </td>
-					<td> <?php echo $row['strShirtSize'];?> </td>
-					<td> <?php echo $row['strGender'] . " " . $row['strTypeofTeam'] . " " . $row['strLevelofTeam'];?> </td>
-				</tr>
+						<tbody>
+						<tr>
+							<td> <a href="update_golfer.php?intGolferID= <?php echo $row['intGolferID'];?>"> Edit </a></td>
+							<td> <?php echo charConvert($row['strFirstName']);?> </td>
+							<td> <?php echo charConvert($row['strLastName']);?> </td>
+							<td> <?php echo charConvert($row['strAddress']);?> </td>
+							<td> <?php echo charConvert($row['strCity']);?> </td>
+							<td> <?php echo $row['strState'];?> </td>
+							<td> <?php echo charConvert($row['strZip']);?> </td>
+							<td> <?php echo charConvert($row['strPhone']);?> </td>
+							<td> <?php echo charConvert($row['strEmail']);?> </td>
+							<td> <?php echo $row['strShirtSize'];?> </td>
+							<td> <?php echo $row['strGender'] . " " . $row['strTypeofTeam'] . " " . $row['strLevelofTeam'];?> </td>
+						</tr>
+						</tbody>
 			<?php } ?>
-			</table>
+					</table>
+				</div>
 	<?php
 			// Free result set
 			mysqli_free_result($result);

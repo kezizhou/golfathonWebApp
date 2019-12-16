@@ -14,8 +14,10 @@
 		<link rel="stylesheet" type="text/css" href="/styles/home.css" media="screen">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Salsa&display=swap">
 		<?php 
-			if( isset($strCustomCSS) ) {
-				echo "<link rel='stylesheet' type='text/css' href='" . $strCustomCSS . "' media='screen'>";
+			if( isset($astrCustomCSS) ) {
+				foreach( $astrCustomCSS as $strCustomCSS ) {
+					echo "<link rel='stylesheet' type='text/css' href='" . $strCustomCSS . "' media='screen'>";
+				}
 			}
 		?>
 		
