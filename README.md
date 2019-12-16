@@ -22,7 +22,6 @@ There are 2 methods that could be used to automate this application, which have 
 ### 1. Chef - "master" Branch
 This branch contains a sample Chef cookbook that could be used to set up this web app. This becomes advantageous for larger applications, since this allows for better automation of the server install and setup. Even if the server is damaged, Chef can run the cookbook and bring the server back to the desired state.
 In this method, the page can be viewed by going to the public DNS of the EC2 instance the server is running on. 
-
 The Jenkinsfile in this branch pushes the PHP files from the repo to an S3 bucket.
 
 !["master" Branch Diagram](documentation/diagrams/golfathonWebAppMaster.png)  
