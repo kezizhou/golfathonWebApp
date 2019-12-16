@@ -33,6 +33,7 @@ This project started as a basic web app that allowed for user interaction to sub
     * The charConvert() function was created to guard against XSS attacks, and converts special characters to HTML entities anytime user input is output to the page.
 * Enhancements:
     * A 60 minute session timeout was added to the admin page, which automatically redirects the user back to login.php along with a timeout message upon expiration. 
+    * Adjustments were made to the navigation bar and tables to accomodate mobile devices
 
 ### Demonstration
 Default Page:
@@ -44,5 +45,8 @@ Admin Page:
 Sample Login Timeout Page:
 !["Login Timeout Screen"](documentation/demos/loginTimeout.png)
 
-Responsive Design for Mobile:
-!["Responsive Design for Mobile"](documentation/deos/responsiveMobile.png)
+Responsive Table for Mobile Devices:
+!["Responsive Table for Mobile Devices"](documentation/demos/responsiveTable.jpg)
+
+Responsive Navigation Bar for Mobile Devices:
+!["Responsive Navigation Bar for Mobile Devices"](documentation/demos/responsiveNavbar.jpg)
