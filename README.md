@@ -1,6 +1,14 @@
 # golfathonWebApp
 golfathonWebApp is a web application for a Golfathon Event. This application features enhancements that allow for increased security against XSS attacks, hashed password validation, and session timeout.
 
+Sections:
+[AWS](#aws)
+[Jenkins](#jenkins)
+[Chef "master" Branch](#1-chef-master-branch)
+[Docker "docker" Branch](#2-docker-docker-branch)
+[Enhancements and Best Practices](enhancements-and-best-practices)
+[Demonstrations](demonstrations)
+
 ### AWS
 This web app utilizes AWS for infrastructure and security. The "aws" folder contains CloudFormation templates used to setup this application. 
 
@@ -35,7 +43,7 @@ This project started as a basic web app that allowed for user interaction to sub
     * A 60 minute session timeout was added to the admin page, which automatically redirects the user back to login.php along with a timeout message upon expiration. 
     * Adjustments were made to the navigation bar and tables to accomodate mobile devices
 
-### Demonstration
+### Demonstrations
 Default Page:
 !["Default Page Demo"](documentation/demos/defaultPageDemo.gif)
 
@@ -45,8 +53,8 @@ Admin Page:
 Sample Login Timeout Page:
 !["Login Timeout Screen"](documentation/demos/loginTimeout.png)
 
-Responsive Table for Mobile Devices:
-<img src="documentation/demos/responsiveTable.jpg" width="512.5">
+Responsive Table for Mobile Devices:  
+<img src="documentation/demos/responsiveTable.jpg" width="256.25">
 
-Responsive Navigation Bar for Mobile Devices:
-<img src="documentation/demos/responsiveTable.jpg" width="537">
+Responsive Navigation Bar for Mobile Devices:  
+<img src="documentation/demos/responsiveNavbar.jpg" width="268.5">
