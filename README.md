@@ -46,7 +46,7 @@ Sample Login Timeout Page:
 !["Login Timeout Screen"](documentation/demos/loginTimeout.png)
 
 Responsive Table for Mobile Devices:
-!["Responsive Table for Mobile Devices"](documentation/demos/responsiveTable.jpg)
+<img src="documentation/demos/responsiveTable.jpg" width="512.5">
 
 Responsive Navigation Bar for Mobile Devices:
-!["Responsive Navigation Bar for Mobile Devices"](documentation/demos/responsiveNavbar.jpg)
+<img src="documentation/demos/responsiveTable.jpg" width="537">
