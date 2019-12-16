@@ -40,3 +40,6 @@ Default Page:
 
 Admin Page:
 !["Default Page Demo"](documentation/demos/adminPageDemo.gif)
+
+Sample Login Timeout Page:
+!["Login Timeout Screen"](documentation/demos/loginTimeout.png)
