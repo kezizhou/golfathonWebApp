@@ -25,6 +25,7 @@ In this method, the page can be viewed by going to the public DNS of the EC2 ins
 The Jenkinsfile in this branch pushes the PHP files from the repo to an S3 bucket.
 
 !["master" Branch Diagram](documentation/diagrams/golfathonWebAppMaster.png)  
+
 [Back to Top](#golfathonWebApp)
 
 ### 2. Docker - "docker" Branch
