@@ -32,8 +32,11 @@ This project started as a basic web app that allowed for user interaction to sub
     * Use of the password_verify() PHP function was added to allow for verification of hashed user passwords in the database.
     * The charConvert() function was created to guard against XSS attacks, and converts special characters to HTML entities anytime user input is output to the page.
 * Enhancements:
-    * A 60 minute session timeout was added to the admin page, which automatically redirects the user back to the login.php along with a timeout message upon expiration. 
+    * A 60 minute session timeout was added to the admin page, which automatically redirects the user back to login.php along with a timeout message upon expiration. 
 
 ### Demonstration
 Default Page:
 !["Default Page Demo"](documentation/demos/defaultPageDemo.gif)
+
+Admin Page:
+!["Default Page Demo"](documentation/demos/adminPageDemo.gif)
