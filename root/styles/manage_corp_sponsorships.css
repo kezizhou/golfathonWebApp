@@ -1,0 +1,21 @@
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+	
+	/* Table labels */
+	td:nth-of-type(1):before { content: "Edit Available \ASponsorships"; white-space: pre; }
+	td:nth-of-type(1):after { content: "\A\A"; white-space: pre; }
+	td:nth-of-type(2):before { content: "Corporate Sponsorship \AType"; white-space: pre; }
+	td:nth-of-type(2):after { content: "\A\A"; white-space: pre; }
+	td:nth-of-type(3):before { content: "Cost"; }
+	td:nth-of-type(4):before { content: "Benefits"; }
+	td:nth-of-type(5):before { content: "# Available"; }
+	
+	*:before {
+		line-height: normal;
+	}
+	td {
+		padding-top: 2.5px;
+	}
+	
+}

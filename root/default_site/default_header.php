@@ -9,12 +9,15 @@
 	<head>
 		
 		<meta charset=utf-8>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6/html5shiv.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="/styles/home.css" media="screen">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Salsa&display=swap">
 		<?php 
-			if( isset($strCustomCSS) ) {
-				echo "<link rel='stylesheet' type='text/css' href='" . $strCustomCSS . "' media='screen'>";
+			if( isset($astrCustomCSS) ) {
+				foreach( $astrCustomCSS as $strCustomCSS ) {
+					echo "<link rel='stylesheet' type='text/css' href='" . $strCustomCSS . "' media='screen'>";
+				}
 			}
 		?>
 		
@@ -55,7 +58,7 @@
 			$rootSite = "/default_site"
 		?>
 
-		<div class="navbar">
+		<div class="navbar" id="navbar">
 			<a class="<?php 
 				switch( $currentPage ) {
 					case "home.php":
@@ -125,10 +128,22 @@
 							echo "active";
 							break;
 					}
-					?>" class="navbar-right" href="<?php echo $rootSite . "/Login/login.php";?>"> Login </a>
+					?>" href="<?php echo $rootSite . "/Login/login.php";?>"> Login </a>
 			</div>
+			<a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="responsiveNavbar()">&#9776;</a>
 		</div>
 	
+		<script type="text/javascript"> 
+			function responsiveNavbar() {
+				var navbar = document.getElementById("navbar");
+				if (navbar.className === "navbar") {
+					navbar.className += " responsive";
+				} else {
+					navbar.className = "navbar";
+				}
+			}
+		</script>
+
 	</body>
 	
 </html>
