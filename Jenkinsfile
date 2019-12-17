@@ -56,16 +56,23 @@ pipeline {
                         // Otherwise continue 
                         echo "This node is already part of a swarm."
                     }
-                }
-                withCredentials([string(credentialsId: 'golfathonMySQLServerName', variable: 'mySQLServerName')]) {
-                    sh "echo $mySQLServerName | docker secret create mySQLServerName -"
-                }
-                withCredentials([usernamePassword(credentialsId: 'golfathonMySQLUser', usernameVariable: 'mySQLUsername', passwordVariable: 'mySQLPassword')]) {
-                    sh "echo $mySQLUsername | docker secret create mySQLUsername -"
-                    sh "echo $mySQLPassword | docker secret create mySQLPassword -"
-                }
-                withCredentials([string(credentialsId: 'golfathonMySQLDBName', variable: 'mySQLDBName')]) {
-                    sh "echo $mySQLDBName | docker secret create mySQLDBName -"
+                    try {
+                        // If credentials do not exist
+                        withCredentials([string(credentialsId: 'golfathonMySQLServerName', variable: 'mySQLServerName')]) {
+                            sh "echo $mySQLServerName | docker secret create mySQLServerName -"
+                        }
+                        withCredentials([usernamePassword(credentialsId: 'golfathonMySQLUser', usernameVariable: 'mySQLUsername', passwordVariable: 'mySQLPassword')]) {
+                            sh "echo $mySQLUsername | docker secret create mySQLUsername -"
+                            sh "echo $mySQLPassword | docker secret create mySQLPassword -"
+                        }
+                        withCredentials([string(credentialsId: 'golfathonMySQLDBName', variable: 'mySQLDBName')]) {
+                            sh "echo $mySQLDBName | docker secret create mySQLDBName -"
+                        }
+                    }
+                    catch ( Exception e ) {
+                        // Otherwise continue
+                        echo "The secrets already exist."
+                    }
                 }
                 sh "docker stack deploy -c docker-compose.yml golfathon-web-app"
             }
