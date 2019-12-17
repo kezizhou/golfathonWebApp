@@ -16,11 +16,10 @@ services:
             - "80:80"
             - "443:443"
           
-
 secrets:
     mySQLServerName:
         external: true
-    mySQLUserName:
+    mySQLUsername:
         external: true
     mySQLPassword:
         external: true
