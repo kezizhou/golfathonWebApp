@@ -55,7 +55,7 @@ pipeline {
                     catch( Exception e ) {
                         // Otherwise continue 
                         echo "This node is already part of a swarm."
-                        sh "exit 1"
+                        sh "exit 0"
                     }
                     try {
                         // If credentials do not exist
@@ -73,7 +73,7 @@ pipeline {
                     catch ( Exception e ) {
                         // Otherwise continue
                         echo "The secrets already exist."
-                        sh "exit 1"
+                        sh "exit 0"
                     }
                 }
                 sh "docker stack deploy -c docker-compose.yml golfathon-web-app"
