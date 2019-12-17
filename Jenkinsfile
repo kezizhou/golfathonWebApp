@@ -47,34 +47,17 @@ pipeline {
                 branch "docker"
             }
             steps {
-                script {
-                    try {
-                        // If swarm does not exist
-                        sh "docker swarm init"
-                    }
-                    catch( Exception e ) {
-                        // Otherwise continue 
-                        echo "This node is already part of a swarm."
-                        sh "exit 0"
-                    }
-                    try {
-                        // If credentials do not exist
-                        withCredentials([string(credentialsId: 'golfathonMySQLServerName', variable: 'mySQLServerName')]) {
-                            sh "echo $mySQLServerName | docker secret create mySQLServerName -"
-                        }
-                        withCredentials([usernamePassword(credentialsId: 'golfathonMySQLUser', usernameVariable: 'mySQLUsername', passwordVariable: 'mySQLPassword')]) {
-                            sh "echo $mySQLUsername | docker secret create mySQLUsername -"
-                            sh "echo $mySQLPassword | docker secret create mySQLPassword -"
-                        }
-                        withCredentials([string(credentialsId: 'golfathonMySQLDBName', variable: 'mySQLDBName')]) {
-                            sh "echo $mySQLDBName | docker secret create mySQLDBName -"
-                        }
-                    }
-                    catch ( Exception e ) {
-                        // Otherwise continue
-                        echo "The secrets already exist."
-                        sh "exit 0"
-                    }
+                sh "docker swarm init" || echo "This node is already part of a swarm."
+                // Create Docker secrets
+                withCredentials([string(credentialsId: 'golfathonMySQLServerName', variable: 'mySQLServerName')]) {
+                    sh "echo $mySQLServerName | docker secret create mySQLServerName -" || echo "This secret already exists."
+                }
+                withCredentials([usernamePassword(credentialsId: 'golfathonMySQLUser', usernameVariable: 'mySQLUsername', passwordVariable: 'mySQLPassword')]) {
+                    sh "echo $mySQLUsername | docker secret create mySQLUsername -" || echo "This secret already exists."
+                    sh "echo $mySQLPassword | docker secret create mySQLPassword -" || echo "This secret already exists."
+                }
+                withCredentials([string(credentialsId: 'golfathonMySQLDBName', variable: 'mySQLDBName')]) {
+                    sh "echo $mySQLDBName | docker secret create mySQLDBName -" || echo "This secret already exists."
                 }
                 sh "docker stack deploy -c docker-compose.yml golfathon-web-app"
             }
