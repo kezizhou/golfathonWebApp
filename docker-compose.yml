@@ -1,0 +1,28 @@
+version: '3.7'
+services:
+    golfathon-web-app:
+        image: kezizhou/golfathon-web-app
+        environment:
+            mySQLServerNameFile: /run/secrets/mySQLServerName
+            mySQLUsernameFile: /run/secrets/mySQLUserName
+            mySQLPasswordFile: /run/secrets/mySQLPassword
+            mySQLDBNameFile: /run/secrets/mySQLDBName
+        secrets: 
+            - mySQLServerName
+            - mySQLUsername
+            - mySQLPassword
+            - mySQLDBName
+        ports:
+            - "80:80"
+            - "443:443"
+          
+
+secrets:
+    mySQLServerName:
+        external: true
+    mySQLUserName:
+        external: true
+    mySQLPassword:
+        external: true
+    mySQLDBName:
+        external: true

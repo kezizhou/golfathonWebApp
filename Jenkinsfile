@@ -37,5 +37,29 @@ pipeline {
                 }
             }
         }
+        stage('Start Docker Server') {
+            options {
+                timeout( time: 5, unit: "MINUTES" )
+            }
+            when {
+                // Push to docker branch
+                beforeAgent true
+                branch "docker"
+            }
+            steps {
+                sh "docker swarm init"
+                withCredentials([string(credentialsId: 'golfathonMySQLServerName', variable: 'mySQLServerName')]) {
+                    sh "echo $mySQLServerName | docker secret create mySQLServerName -"
+                }
+                withCredentials([usernamePassword(credentialsId: 'golfathonMySQLUser', usernameVariable: 'mySQLUsername', passwordVariable: 'mySQLPassword')]) {
+                    sh "echo $mySQLUsername | docker secret create mySQLUsername -"
+                    sh "echo $mySQLPassword | docker secret create mySQLPassword -"
+                }
+                withCredentials([string(credentialsId: 'golfathonMySQLDBName', variable: 'mySQLDBName')]) {
+                    sh "echo $mySQLDBName | docker secret create mySQLDBName -"
+                }
+                sh "docker stack deploy -c docker-compose.yml golfathon-web-app"
+            }
+        }
     }
 }

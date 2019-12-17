@@ -1,6 +1,6 @@
 FROM amazonlinux
 
-# Install Apache and PHP
+# Install Apache, PHP, and MySQL
 RUN yum -y update
 RUN yum -y install httpd 
 RUN amazon-linux-extras install php7.3 
@@ -17,8 +17,8 @@ RUN echo "ServerName localhost" >> /etc/httpd/conf/httpd.conf
 # Non-privileged user
 # USER 1000
 
-# Start Apache web server
-CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+# Start httpd and php-fpm services
+CMD "/var/www/html/service_start.sh"
 
 EXPOSE 80
 EXPOSE 443
