@@ -50,7 +50,7 @@ pipeline {
                 sh "docker swarm init || echo 'This node is already part of a swarm.''"
                 // Create Docker secrets
                 withCredentials([string(credentialsId: 'golfathonMySQLServerName', variable: 'mySQLServerName')]) {
-                    sh "echo $mySQLServerName | docker secret create mySQLServerName -" || echo "This secret already exists."
+                    sh "echo $mySQLServerName | docker secret create mySQLServerName -'' || echo 'This secret already exists.''"
                 }
                 withCredentials([usernamePassword(credentialsId: 'golfathonMySQLUser', usernameVariable: 'mySQLUsername', passwordVariable: 'mySQLPassword')]) {
                     sh "echo $mySQLUsername | docker secret create mySQLUsername - || echo 'This secret already exists.''"
