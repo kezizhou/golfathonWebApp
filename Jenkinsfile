@@ -16,8 +16,8 @@ pipeline {
             when {
                 // Push to docker branch
                 // GitHub webook "Payload URL" format: http://<EC2 Public DNS>:8080/github-webhook/
-                beforeAgent true
-                branch "docker"
+                // beforeAgent true
+                // branch "docker"
             }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'DockerUser', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
@@ -47,7 +47,14 @@ pipeline {
                 branch "docker"
             }
             steps {
-                sh "docker swarm init"
+                try {
+                    // If swarm does not exist
+                    sh "docker swarm init"
+                }
+                catch( exc ) {
+                    // Otherwise continue 
+                    echo "This node is already part of a swarm."
+                }
                 withCredentials([string(credentialsId: 'golfathonMySQLServerName', variable: 'mySQLServerName')]) {
                     sh "echo $mySQLServerName | docker secret create mySQLServerName -"
                 }
