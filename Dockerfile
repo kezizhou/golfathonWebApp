@@ -8,6 +8,9 @@ RUN amazon-linux-extras install php7.3
 # Copy files to container
 COPY root /var/www/html
 
+# Copy service start script
+COPY service_start.sh /usr/bin
+
 # Apache user permissions
 # RUN chmod 755 -R /var/www/html
 
@@ -18,7 +21,7 @@ RUN echo "ServerName localhost" >> /etc/httpd/conf/httpd.conf
 # USER 1000
 
 # Start httpd and php-fpm services
-CMD "/var/www/html/service_start.sh"
+CMD "/usr/bin/service_start.sh"
 
 EXPOSE 80
 EXPOSE 443

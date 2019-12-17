@@ -1,15 +1,16 @@
 #!/bin/bash
 
-# Start the first process
-/usr/sbin/httpd -D
+# Start httpd
+/usr/sbin/service httpd start
+# Get status exit code
 status=$?
 if [ $status -ne 0 ]; then
   echo "Failed to start httpd: $status"
   exit $status
 fi
 
-# Start the second process
-/usr/sbin/php-fpm -D
+# Start php-fpm
+/usr/sbin/service php-fpm start
 status=$?
 if [ $status -ne 0 ]; then
   echo "Failed to start php-fpm: $status"

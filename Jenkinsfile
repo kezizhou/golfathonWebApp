@@ -14,12 +14,13 @@ pipeline {
                 timeout( time: 10, unit: "MINUTES" )
             }
             when {
-                // Push to docker branch
+                // Push to "docker" branch
                 // GitHub webook "Payload URL" format: http://<EC2 Public DNS>:8080/github-webhook/
                 beforeAgent true
-                branch "master"
+                branch "docker"
             }
             steps {
+                // Build and push image to Docker Hub
                 withCredentials([usernamePassword(credentialsId: 'DockerUser', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh "docker login -u $USERNAME -p $PASSWORD"
                 }
@@ -42,13 +43,16 @@ pipeline {
                 timeout( time: 5, unit: "MINUTES" )
             }
             when {
-                // Push to docker branch
+                // Push to "docker" branch
                 beforeAgent true
                 branch "docker"
             }
             steps {
-                sh "docker swarm init || echo 'This node is already part of a swarm.'"
+                // Create Docker swarm
+                // If already exists, exit 0
+                sh "docker swarm init || exit 0"
                 // Create Docker secrets
+                // If already exists, exit 0
                 withCredentials([string(credentialsId: 'golfathonMySQLServerName', variable: 'mySQLServerName')]) {
                     sh "echo $mySQLServerName | docker secret create mySQLServerName - || exit 0"
                 }
@@ -59,6 +63,7 @@ pipeline {
                 withCredentials([string(credentialsId: 'golfathonMySQLDBName', variable: 'mySQLDBName')]) {
                     sh "echo $mySQLDBName | docker secret create mySQLDBName - || exit 0"
                 }
+                // Build an deploy from Docker Compose file
                 sh "docker stack deploy -c docker-compose.yml golfathon-web-app"
             }
         }
