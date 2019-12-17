@@ -46,15 +46,15 @@ pipeline {
                 beforeAgent true
                 branch "docker"
             }
+            try {
+                // If swarm does not exist
+                sh "docker swarm init"
+            }
+            catch( exc ) {
+                // Otherwise continue 
+                echo "This node is already part of a swarm."
+            }
             steps {
-                try {
-                    // If swarm does not exist
-                    sh "docker swarm init"
-                }
-                catch( exc ) {
-                    // Otherwise continue 
-                    echo "This node is already part of a swarm."
-                }
                 withCredentials([string(credentialsId: 'golfathonMySQLServerName', variable: 'mySQLServerName')]) {
                     sh "echo $mySQLServerName | docker secret create mySQLServerName -"
                 }
