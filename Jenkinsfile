@@ -47,7 +47,7 @@ pipeline {
                 branch "docker"
             }
             steps {
-                sh "docker swarm init || echo 'This node is already part of a swarm.''"
+                sh "docker swarm init || echo 'This node is already part of a swarm.'"
                 // Create Docker secrets
                 withCredentials([string(credentialsId: 'golfathonMySQLServerName', variable: 'mySQLServerName')]) {
                     sh "echo $mySQLServerName | docker secret create mySQLServerName - || echo 'This secret already exists.'"
