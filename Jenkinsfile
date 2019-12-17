@@ -47,17 +47,17 @@ pipeline {
                 branch "docker"
             }
             steps {
-                sh "docker swarm init" || echo "This node is already part of a swarm."
+                sh "docker swarm init || echo 'This node is already part of a swarm.''"
                 // Create Docker secrets
                 withCredentials([string(credentialsId: 'golfathonMySQLServerName', variable: 'mySQLServerName')]) {
                     sh "echo $mySQLServerName | docker secret create mySQLServerName -" || echo "This secret already exists."
                 }
                 withCredentials([usernamePassword(credentialsId: 'golfathonMySQLUser', usernameVariable: 'mySQLUsername', passwordVariable: 'mySQLPassword')]) {
-                    sh "echo $mySQLUsername | docker secret create mySQLUsername -" || echo "This secret already exists."
-                    sh "echo $mySQLPassword | docker secret create mySQLPassword -" || echo "This secret already exists."
+                    sh "echo $mySQLUsername | docker secret create mySQLUsername - || echo 'This secret already exists.''"
+                    sh "echo $mySQLPassword | docker secret create mySQLPassword - || echo 'This secret already exists.''"
                 }
                 withCredentials([string(credentialsId: 'golfathonMySQLDBName', variable: 'mySQLDBName')]) {
-                    sh "echo $mySQLDBName | docker secret create mySQLDBName -" || echo "This secret already exists."
+                    sh "echo $mySQLDBName | docker secret create mySQLDBName - || echo 'This secret already exists.''"
                 }
                 sh "docker stack deploy -c docker-compose.yml golfathon-web-app"
             }
