@@ -1,5 +1,9 @@
 FROM amazonlinux
 
+# Basic linux requirements
+RUN yum install -y procps
+RUN yum -y install initscripts
+
 # Install Apache, PHP, and MySQL
 RUN yum -y update
 RUN yum -y install httpd 
