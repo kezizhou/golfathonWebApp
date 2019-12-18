@@ -34,8 +34,8 @@ pipeline {
             post {
                 always {
                     // Clean images
-                    sh "docker rmi $IMAGE_LOCATION:$VERSION"
-                    sh "docker rmi $IMAGE_LOCATION:latest"
+                    sh "docker rmi $IMAGE_LOCATION:apache"
+                    sh "docker rmi $IMAGE_LOCATION:php"
                     sh "docker image prune -f"
                 }
             }
