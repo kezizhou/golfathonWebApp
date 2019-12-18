@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Docker Image Push') {
             options {
-                timeout( time: 10, unit: "MINUTES" )
+                timeout( time: 5, unit: "MINUTES" )
             }
             when {
                 // Push to "docker" branch
