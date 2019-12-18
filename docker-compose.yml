@@ -2,9 +2,6 @@ version: '3.7'
 services:
     apache-golfathon-web-app:
         image: kezizhou/golfathon-web-app:apache
-        networks:
-            - frontend
-            - backend
         ports:
             - "80:80"
             - "443:443"
@@ -12,8 +9,6 @@ services:
             - ./root/:/var/www/localhost/htdocs
     php-golfathon-web-app:
         image: kezizhou/golfathon-web-app:php
-        networks:
-            - backend
         environment:
             mySQLServerNameFile: /run/secrets/mySQLServerName
             mySQLUsernameFile: /run/secrets/mySQLUserName
