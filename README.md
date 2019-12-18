@@ -43,6 +43,7 @@ This project started as a basic web app that allowed for user interaction to sub
     * HTML headers have been moved to the default_header.php and admin_header.php files to avoid redundancy in code.
     * The mySQLConnect() function was created.
     * A custom InvalidCredentialException class was created to allow for catching invalid login exceptions as a specific exception.
+    * In order to reduce unnecessary Docker image space, the Dockerfiles were changed to use an alpine image instead of an amazonlinux image. 
 * Security:
     * Use of the password_verify() PHP function was added to allow for verification of hashed user passwords in the database.
     * The charConvert() function was created to guard against XSS attacks, and converts special characters to HTML entities anytime user input is output to the page.
