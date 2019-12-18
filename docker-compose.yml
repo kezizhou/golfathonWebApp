@@ -20,7 +20,7 @@ services:
             - mySQLPassword
             - mySQLDBName
         volumes: 
-            - root:/var/www/localhost/htdocs
+            - ./root/:/var/www/localhost/htdocs
           
 secrets:
     mySQLServerName:
