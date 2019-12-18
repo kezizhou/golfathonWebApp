@@ -20,14 +20,16 @@ pipeline {
                 branch "docker"
             }
             steps {
-                // Build and push image to Docker Hub
                 withCredentials([usernamePassword(credentialsId: 'DockerUser', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh "docker login -u $USERNAME -p $PASSWORD"
                 }
-                sh "docker build -t $IMAGE_LOCATION:$VERSION ."
-                sh "docker push $IMAGE_LOCATION:$VERSION"
-                sh "docker tag $IMAGE_LOCATION:$VERSION $IMAGE_LOCATION:latest"
-                sh "docker push $IMAGE_LOCATION:latest"
+                // Build and push apache and php images to Docker Hub
+                sh "docker build -t $IMAGE_LOCATION:apache apache.dockerfile"
+                sh "docker push $IMAGE_LOCATION:apache"
+                sh "docker build -t $IMAGE_LOCATION:php php.dockerfile"
+                sh "docker push $IMAGE_LOCATION:php"
+
+                // sh "docker tag $IMAGE_LOCATION:$VERSION $IMAGE_LOCATION:latest"
             }
             post {
                 always {
