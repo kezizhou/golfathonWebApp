@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 # Install PHP
-RUN apk add php7-fpm
+RUN apk add php7 php7-fpm
 
 # PHP user permissions
 # RUN chmod 755 -R /var/www/localhost/htdocs
