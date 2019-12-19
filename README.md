@@ -14,10 +14,10 @@ This web app utilizes AWS for infrastructure and security. The "aws" folder cont
 [Back to Top](#golfathonWebApp)
 
 ### Jenkins
-The Jenkinsfiles allow for the automated build and push of images to Docker Hub, as well as pushing files to S3.
+The Jenkinsfiles allow for the automated build and push of images to Docker Hub, as well as pushing files to S3.  
+[Back to Top](#golfathonWebApp)
 
 There are 2 methods that could be used to automate this application, which have been separated by Git branches:  
-[Back to Top](#golfathonWebApp)
 
 ### 1. Chef - "master" Branch
 This branch contains a sample Chef cookbook that could be used to set up this web app. This becomes advantageous for larger applications, since this allows for better automation of the server install and setup. Even if the server is damaged, Chef can run the cookbook and bring the server back to the desired state.
