@@ -10,4 +10,4 @@ RUN apk add php7 php7-fpm
 # USER 1000
 
 # Start php-fpm service
-CMD ["/usr/sbin/php-fpm7", "-D", "-F -R", "FOREGROUND"]
+CMD ["/usr/sbin/php-fpm7", "-D", "-F", "-R", "FOREGROUND"]
