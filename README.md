@@ -11,6 +11,10 @@ golfathonWebApp is a web application for a Golfathon Event. This application fea
 
 ### AWS
 This web app utilizes AWS for infrastructure and security. The "aws" folder contains CloudFormation templates used to setup this application.  
+AWS Setup:
+
+S3 Bucket
+![Golfathon S3 Bucket](documentation/demos/s3bucket.png)
 [Back to Top](#golfathonWebApp)
 
 ### Jenkins
