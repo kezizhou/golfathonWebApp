@@ -10,7 +10,7 @@ RUN apk add apache2
 RUN echo "ServerName localhost" >> /etc/apache2/httpd.conf
 
 # Enable PHP
-COPY golfathon.apache.conf /etc/apache2/conf.d
+COPY golfathonapache.conf /etc/apache2/conf.d
 
 # Non-privileged user
 # USER 1000
