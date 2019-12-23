@@ -28,8 +28,6 @@ pipeline {
                 sh "docker push $IMAGE_LOCATION:apache"
                 sh "docker build -t $IMAGE_LOCATION:php -f php.dockerfile ."
                 sh "docker push $IMAGE_LOCATION:php"
-
-                // sh "docker tag $IMAGE_LOCATION:$VERSION $IMAGE_LOCATION:latest"
             }
             post {
                 always {

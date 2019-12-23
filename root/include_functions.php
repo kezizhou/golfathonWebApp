@@ -8,11 +8,15 @@
         static $conn;
 
         if( !isset($conn) ) {
-            // Connect to MySQL
-            $config = parse_ini_file(dirname(__DIR__) . '/private/config.ini');
+            // Get Docker secret paths and values from the files
+            $astrConfig = array();
+            $astrConfig['servername'] = file_get_contents( getenv('mySQLServerNameFile', true) );
+            $astrConfig['username'] = file_get_contents( getenv('mySQLUsernameFile', true) );
+            $astrConfig['password'] = file_get_contents( getenv('mySQLPasswordFile', true) );
+            $astrConfig['dbname'] = file_get_contents( getenv('mySQLDBNameFile', true) );
 
             // Create connection
-            $conn = mysqli_connect($config['servername'], $config['username'], $config['password'], $config['dbname']);
+            $conn = mysqli_connect($astrConfig['servername'], $astrConfig['username'], $astrConfig['password'], $astrConfig['dbname']);
         }
 
         // Check connection
