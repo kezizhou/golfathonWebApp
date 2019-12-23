@@ -4,7 +4,6 @@ services:
         image: kezizhou/golfathon-web-app:apache
         ports:
             - "80:80"
-            - "443:443"
         volumes:
             - ./root/:/var/www/localhost/htdocs
     php-golfathon-web-app:

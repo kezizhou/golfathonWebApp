@@ -58,7 +58,8 @@ Resources:
                 - "chkconfig docker on"
                 - "yum install -y git"
                 - "yum update -y"
-                - "aws s3 cp s3://golfathon-web-app-dev /home/ec2-user/root --recursive"
+                - "aws s3 cp s3://golfathon-web-app-dev/ /home/ec2-user/root --recursive"
+                - "aws s3 cp s3://golfathon-web-app-dev/include_functions_docker.php /home/ec2-user/root/include_functions.php"
   golfathonASGDev:
     Type: AWS::AutoScaling::AutoScalingGroup
     Properties:
