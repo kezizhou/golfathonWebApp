@@ -11,3 +11,5 @@ RUN apk add php7 php7-fpm
 
 # Start php-fpm service
 CMD ["/usr/sbin/php-fpm7", "-F", "-R"]
+
+EXPOSE 9000

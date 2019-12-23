@@ -19,4 +19,3 @@ COPY golfathon.apache.conf /etc/apache2/conf.d
 CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
 
 EXPOSE 80
-EXPOSE 443

@@ -1,13 +1,17 @@
 version: '3.7'
 services:
     apache-golfathon-web-app:
+        container_name: apachegolfathon
         image: kezizhou/golfathon-web-app:apache
         ports:
             - "80:80"
         volumes:
             - ./root/:/var/www/localhost/htdocs
     php-golfathon-web-app:
+        container_name: phpgolfathon
         image: kezizhou/golfathon-web-app:php
+        ports:
+            - "9000:9000"
         environment:
             mySQLServerNameFile: /run/secrets/mySQLServerName
             mySQLUsernameFile: /run/secrets/mySQLUserName
