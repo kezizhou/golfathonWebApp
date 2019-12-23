@@ -7,7 +7,7 @@ RUN apk add php7 php7-fpm
 COPY www.conf /etc/php7/php-fpm.d/www.conf
 
 # PHP user permissions
-# RUN chmod 755 -R /var/www/localhost/htdocs
+RUN chmod 755 -R /var/www/localhost/htdocs
 
 # Non-privileged user
 # USER 1000

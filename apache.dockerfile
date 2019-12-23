@@ -4,7 +4,7 @@ FROM alpine:latest
 RUN apk add apache2
 
 # Apache user permissions
-# RUN chmod 755 -R /var/www/localhost/htdocs
+RUN chmod 755 -R /var/www/localhost/htdocs
 
 # Disable httpd warning
 RUN echo "ServerName localhost" >> /etc/apache2/httpd.conf
