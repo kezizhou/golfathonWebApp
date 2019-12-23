@@ -9,7 +9,7 @@ services:
     php-golfathon-web-app:
         image: kezizhou/golfathon-web-app:php
         ports:
-            - "9000:9000"
+            - "127.0.0.2:9000:9000"
         environment:
             mySQLServerNameFile: /run/secrets/mySQLServerName
             mySQLUsernameFile: /run/secrets/mySQLUserName

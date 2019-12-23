@@ -29,13 +29,15 @@ The Jenkinsfile in this branch pushes the PHP files from the repo to an S3 bucke
 [Back to Top](#golfathonWebApp)
 
 ### 2. Docker - "docker" Branch
-This branch contains a Dockerfile that is used to build a Docker image of the application. This Dockerfile installs Apache, PHP, and MySQL, and starts the Apache web server. It copies the PHP scripts and files from the repo to the container. This image can then be pulled from Docker Hub to the server(s). 
-In this method, the Docker container is exposed on ports 80 and 443, and the page can be viewed by going to http://localhost:80 or http://localhost:443.
-The Jenkinsfile in this branch builds the Docker image, pushes it to Docker Hub, and runs the image.
+This branch contains a Dockerfile that is used to build a Docker image of the application. This Dockerfile installs Apache, PHP, and MySQL, exposes the ports, and starts the services. It copies the PHP scripts and files from the repo to the container. This image can then be pulled from Docker Hub to the server(s). 
+In this method, the Apache Docker container is exposed on ports 80, and the page can be viewed by going to http://localhost:80.
 
 !["docker" Branch Diagram](documentation/diagrams/golfathonWebAppDocker.png)  
 
-To see the Docker Hub repository for this application, please go [here]("https://hub.docker.com/repository/docker/kezizhou/golfathon-web-app").
+To see the Docker Hub repository for this application, please go [here]("https://hub.docker.com/repository/docker/kezizhou/golfathon-web-app").  
+
+The Jenkinsfile in this branch builds the Docker image, pushes it to Docker Hub, and runs the image.  
+!["docker" Branch Jenkins Pipeline](documentation/demos/jenkinsDockerPipeline.png)
 
 [Back to Top](#golfathonWebApp)
 
