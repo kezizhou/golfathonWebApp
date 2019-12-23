@@ -10,12 +10,24 @@ golfathonWebApp is a web application for a Golfathon Event. This application fea
 [Demonstrations of Website](#demonstrations-of-website)
 
 ### AWS
-This web app utilizes AWS for infrastructure and security. The "aws" folder contains CloudFormation templates used to setup this application.  
-AWS Setup:
+This web app utilizes AWS for infrastructure and security. 
+
+AWS Setup:  
+
+##### CloudFormation Templates
+Templatized resources [here](https://github.com/kezizhou/golfathonWebApp/blob/master/aws/)
 
 ##### S3 Bucket
 ![Golfathon S3 Bucket](documentation/demos/s3bucket.png)
 [Back to Top](#golfathonWebApp)
+
+##### IAM
+IAM Role: golfathon-role
+* [Permissions:](https://github.com/kezizhou/golfathonWebApp/blob/master/aws/cft-iam-role-golfathon.yml)
+    * EC2
+    * S3
+    * KMS
+    * Logs
 
 ### Jenkins
 The Jenkinsfiles allow for the automated build and push of images to Docker Hub, as well as pushing files to S3.  
