@@ -6,9 +6,6 @@ services:
             - "80:80"
         volumes:
             - ./root/:/var/www/localhost/htdocs
-        networks:
-            - frontend
-            - backend
     php-golfathon-web-app:
         image: kezizhou/golfathon-web-app:php
         ports:
@@ -25,8 +22,6 @@ services:
             - mySQLDBName
         volumes: 
             - ./root/:/var/www/localhost/htdocs
-        networks:
-            - backend
           
 secrets:
     mySQLServerName:
@@ -37,9 +32,3 @@ secrets:
         external: true
     mySQLDBName:
         external: true
-
-networks:
-    frontend:
-        driver: bridge
-    backend:
-        driver: bridge
