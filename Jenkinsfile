@@ -49,11 +49,9 @@ pipeline {
             steps {
                 sshagent(['golfathonEC2SSH']) {
                     // 3 quotes required for multiline strings
-                    sh """ssh -o StrictHostKeyChecking=no -l ec2-user ec2-3-91-38-255.compute-1.amazonaws.com -a 
-                    <<EOF
-                        whoami
-                        docker swarm init
-                    EOF"""
+                    sh """ssh -o StrictHostKeyChecking=no -l ec2-user ec2-3-91-38-255.compute-1.amazonaws.com -a &&
+                        whoami &&
+                        docker swarm init"""
                     // Create Docker swarm
                     // If already exists, exit 0
                     sh "docker swarm init || exit 0"
