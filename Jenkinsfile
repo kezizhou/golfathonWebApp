@@ -67,6 +67,7 @@ pipeline {
                     }
                     // Build and deploy from Docker Compose file
                     sh "scp docker-compose.yml ec2-user@$EC2_DNS:/home/ec2-user"
+                    sh "scp -r root ec2-user@$EC2_DNS:/home/ec2-user/root"
                     sh "ssh -o StrictHostKeyChecking=no -l ec2-user $EC2_DNS -a 'docker stack deploy -c docker-compose.yml golfathon-web-app'"
                 }
             }
