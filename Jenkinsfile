@@ -52,7 +52,7 @@ pipeline {
                 sshagent(['golfathonEC2SSH']) {
                     // Create Docker swarm
                     // If already exists, exit 0
-                    sh "ssh -o StrictHostKeyChecking=no -l ec2-user $EC2_DNS -a docker swarm init || exit 0"
+                    sh "ssh -o StrictHostKeyChecking=no -l ec2-user $EC2_DNS -a ls -la && docker swarm init || exit 0"
                     // Create Docker secrets
                     // If already exists, exit 0
                     withCredentials([string(credentialsId: 'golfathonMySQLServerName', variable: 'mySQLServerName')]) {
