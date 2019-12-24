@@ -16,7 +16,7 @@ pipeline {
                 // Push to "docker" branch
                 // GitHub webook "Payload URL" format: http://<EC2 Public DNS>:8080/github-webhook/
                 beforeAgent true
-                branch "docker"
+                branch "master"
             }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'DockerUser', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
@@ -47,7 +47,7 @@ pipeline {
                 branch "docker"
             }
             steps {
-                sshagent( credentials: ['ec2-user'] ) {
+                sshagent(['golfathonEC2SSH']) {
                      // Create Docker swarm
                     // If already exists, exit 0
                     sh "docker swarm init || exit 0"
