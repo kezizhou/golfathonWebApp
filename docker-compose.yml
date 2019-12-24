@@ -5,7 +5,7 @@ services:
         ports:
             - "80:80"
         volumes:
-            - ./root/:/var/www/html
+            - ./golfathon/:/var/www/html
     php-golfathon-web-app:
         image: kezizhou/golfathon-web-app:php
         ports:
@@ -21,7 +21,7 @@ services:
             - mySQLPassword
             - mySQLDBName
         volumes: 
-            - ./root/:/var/www/html
+            - ./golfathon/:/var/www/html
           
 secrets:
     mySQLServerName:
