@@ -49,28 +49,29 @@ pipeline {
             steps {
                 sshagent(['golfathonEC2SSH']) {
                     // 3 quotes required for multiline strings
-                    sh """ssh -o StrictHostKeyChecking=no -l ec2-user ec2-3-91-38-255.compute-1.amazonaws.com -a <<EOF
-                        whoami
-                        docker swarm init
-EOF
-                        || exit 0"""
                     // Create Docker swarm
                     // If already exists, exit 0
-                    sh "docker swarm init || exit 0"
+                    sh """ssh -o StrictHostKeyChecking=no -l ec2-user ec2-3-91-38-255.compute-1.amazonaws.com -a 
+                        docker swarm init || exit 0"""
                     // Create Docker secrets
                     // If already exists, exit 0
                     withCredentials([string(credentialsId: 'golfathonMySQLServerName', variable: 'mySQLServerName')]) {
-                        sh "echo $mySQLServerName | docker secret create mySQLServerName - || exit 0"
+                        sh """ssh -o StrictHostKeyChecking=no -l ec2-user ec2-3-91-38-255.compute-1.amazonaws.com -a 
+                        echo $mySQLServerName | docker secret create mySQLServerName - || exit 0"""
                     }
                     withCredentials([usernamePassword(credentialsId: 'golfathonMySQLUser', usernameVariable: 'mySQLUsername', passwordVariable: 'mySQLPassword')]) {
-                        sh "echo $mySQLUsername | docker secret create mySQLUsername - || exit 0"
-                        sh "echo $mySQLPassword | docker secret create mySQLPassword - || exit 0"
+                        sh """ssh -o StrictHostKeyChecking=no -l ec2-user ec2-3-91-38-255.compute-1.amazonaws.com -a 
+                        echo $mySQLUsername | docker secret create mySQLUsername - || exit 0"""
+                        sh """ssh -o StrictHostKeyChecking=no -l ec2-user ec2-3-91-38-255.compute-1.amazonaws.com -a 
+                        echo $mySQLPassword | docker secret create mySQLPassword - || exit 0"""
                     }
                     withCredentials([string(credentialsId: 'golfathonMySQLDBName', variable: 'mySQLDBName')]) {
-                        sh "echo $mySQLDBName | docker secret create mySQLDBName - || exit 0"
+                        sh """ssh -o StrictHostKeyChecking=no -l ec2-user ec2-3-91-38-255.compute-1.amazonaws.com -a 
+                        echo $mySQLDBName | docker secret create mySQLDBName - || exit 0"""
                     }
                     // Build and deploy from Docker Compose file
-                    sh "docker stack deploy -c docker-compose.yml golfathon-web-app"
+                    sh """ssh -o StrictHostKeyChecking=no -l ec2-user ec2-3-91-38-255.compute-1.amazonaws.com -a 
+                    docker stack deploy -c docker-compose.yml golfathon-web-app"""
                 }
             }
         }
