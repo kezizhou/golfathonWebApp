@@ -12,7 +12,7 @@ services:
             - "9000:9000"
         environment:
             mySQLServerNameFile: /run/secrets/mySQLServerName
-            mySQLUsernameFile: /run/secrets/mySQLUserName
+            mySQLUsernameFile: /run/secrets/mySQLUsername
             mySQLPasswordFile: /run/secrets/mySQLPassword
             mySQLDBNameFile: /run/secrets/mySQLDBName
         secrets: 
