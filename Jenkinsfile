@@ -18,7 +18,7 @@ pipeline {
                 // Push to "docker" branch
                 // GitHub webook "Payload URL" format: http://<EC2 Public DNS>:8080/github-webhook/
                 beforeAgent true
-                branch "master"
+                branch "docker"
             }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'DockerUser', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
@@ -29,6 +29,8 @@ pipeline {
                 sh "docker push $IMAGE_LOCATION:apache"
                 sh "docker build -t $IMAGE_LOCATION:php -f php.dockerfile ."
                 sh "docker push $IMAGE_LOCATION:php"
+                sh "docker build -t $IMAGE_LOCATION:mysql -f mysql.dockerfile ."
+                sh "docker push $IMAGE_LOCATION:mysql"
             }
             post {
                 always {

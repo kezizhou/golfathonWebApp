@@ -23,6 +23,9 @@ services:
         volumes: 
             - ./golfathon/:/var/www/html
           
+    mysql-golfathon-web-app:
+        image: kezizhou/golfathon-web-app:mysql
+
 secrets:
     mySQLServerName:
         external: true
