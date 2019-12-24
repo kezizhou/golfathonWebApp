@@ -1,12 +1,16 @@
-FROM alpine:latest
+# FROM alpine:latest
+FROM php:7.4-fpm-alpine
 
-# Install PHP
-RUN apk add php7 php7-fpm
+RUN apk update; \
+    apk upgrade;
 
-# Replace existing config file to allow Apache listener
-COPY www.conf /etc/php7/php-fpm.d/www.conf
+# # Install PHP
+# RUN apk add php7 php7-fpm
 
-# Start php-fpm service
-CMD ["/usr/sbin/php-fpm7", "-F", "-R"]
+# # Replace existing config file to allow Apache listener
+# COPY www.conf /etc/php7/php-fpm.d/www.conf
 
-EXPOSE 9000
+# # Start php-fpm service
+# CMD ["/usr/sbin/php-fpm7", "-F", "-R"]
+
+# EXPOSE 9000
