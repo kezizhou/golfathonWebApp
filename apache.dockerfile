@@ -24,4 +24,4 @@ RUN echo "Include /usr/local/apache2/conf/golfathonapache.conf" \
 # # Start httpd service
 # CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
 
-# EXPOSE 80
+EXPOSE 80

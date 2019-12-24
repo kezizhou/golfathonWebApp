@@ -37,6 +37,7 @@ pipeline {
                     // Clean images
                     sh "docker rmi $IMAGE_LOCATION:apache"
                     sh "docker rmi $IMAGE_LOCATION:php"
+                    sh "docker rmi $IMAGE_LOCATION:mysql"
                     sh "docker image prune -f"
                 }
             }

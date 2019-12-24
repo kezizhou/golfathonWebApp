@@ -25,6 +25,8 @@ services:
           
     mysql-golfathon-web-app:
         image: kezizhou/golfathon-web-app:mysql
+        ports:
+            - "3306:3306"
 
 secrets:
     mySQLServerName:
