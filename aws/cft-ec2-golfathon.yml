@@ -36,14 +36,22 @@ Resources:
         FromPort: 80
         ToPort: 80
         CidrIp: 0.0.0.0/0
+        Description: HTTP
       - IpProtocol: tcp
         FromPort: 443
         ToPort: 443
         CidrIp: 0.0.0.0/0
+        Description: HTTPS
       - IpProtocol: tcp
         FromPort: 22
         ToPort: 22
         CidrIp: 4.15.102.130/32
+        Description: Allow me to SSH
+      - IpProtocol: tcp
+        FromPort: 22
+        ToPort: 22
+        CidrIp: 52.23.238.31/32
+        Description: Jenkins EC2 instance
       SecurityGroupEgress:
       - IpProtocol: -1
         FromPort: -1

@@ -5,7 +5,6 @@ pipeline {
 
     environment {
         IMAGE_LOCATION="kezizhou/golfathon-web-app"
-        VERSION="1.0.1"
     }
 
     stages {
@@ -48,23 +47,25 @@ pipeline {
                 branch "docker"
             }
             steps {
-                // Create Docker swarm
-                // If already exists, exit 0
-                sh "docker swarm init || exit 0"
-                // Create Docker secrets
-                // If already exists, exit 0
-                withCredentials([string(credentialsId: 'golfathonMySQLServerName', variable: 'mySQLServerName')]) {
-                    sh "echo $mySQLServerName | docker secret create mySQLServerName - || exit 0"
+                sshagent( credentials: ['ec2-user'] ) {
+                     // Create Docker swarm
+                    // If already exists, exit 0
+                    sh "docker swarm init || exit 0"
+                    // Create Docker secrets
+                    // If already exists, exit 0
+                    withCredentials([string(credentialsId: 'golfathonMySQLServerName', variable: 'mySQLServerName')]) {
+                        sh "echo $mySQLServerName | docker secret create mySQLServerName - || exit 0"
+                    }
+                    withCredentials([usernamePassword(credentialsId: 'golfathonMySQLUser', usernameVariable: 'mySQLUsername', passwordVariable: 'mySQLPassword')]) {
+                        sh "echo $mySQLUsername | docker secret create mySQLUsername - || exit 0"
+                        sh "echo $mySQLPassword | docker secret create mySQLPassword - || exit 0"
+                    }
+                    withCredentials([string(credentialsId: 'golfathonMySQLDBName', variable: 'mySQLDBName')]) {
+                        sh "echo $mySQLDBName | docker secret create mySQLDBName - || exit 0"
+                    }
+                    // Build and deploy from Docker Compose file
+                    sh "docker stack deploy -c docker-compose.yml golfathon-web-app"
                 }
-                withCredentials([usernamePassword(credentialsId: 'golfathonMySQLUser', usernameVariable: 'mySQLUsername', passwordVariable: 'mySQLPassword')]) {
-                    sh "echo $mySQLUsername | docker secret create mySQLUsername - || exit 0"
-                    sh "echo $mySQLPassword | docker secret create mySQLPassword - || exit 0"
-                }
-                withCredentials([string(credentialsId: 'golfathonMySQLDBName', variable: 'mySQLDBName')]) {
-                    sh "echo $mySQLDBName | docker secret create mySQLDBName - || exit 0"
-                }
-                // Build an deploy from Docker Compose file
-                sh "docker stack deploy -c docker-compose.yml golfathon-web-app"
             }
         }
     }
