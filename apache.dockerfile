@@ -9,7 +9,7 @@ RUN echo "Include /usr/local/apache2/conf/golfathonapache.conf" \
     >> /usr/local/apache2/conf/httpd.conf
 
 
-# # Install Apache
+# # Install Apache 
 # RUN apk add apache2
 
 # # Disable httpd warning
