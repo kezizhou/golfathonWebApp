@@ -6,7 +6,7 @@ pipeline {
     environment {
         IMAGE_LOCATION="kezizhou/golfathon-web-app"
         // EC2_DNS="ec2-3-91-38-255.compute-1.amazonaws.com"
-        EC2_DNS="ip-172-31-19-254.ec2.internal"
+        EC2_DNS="ec2-18-215-156-202.compute-1.amazonaws.com"
     }
 
     stages {
@@ -18,7 +18,7 @@ pipeline {
                 // Push to "docker" branch
                 // GitHub webook "Payload URL" format: http://<EC2 Public DNS>:8080/github-webhook/
                 beforeAgent true
-                branch "docker"
+                branch "master"
             }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'DockerUser', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
