@@ -8,8 +8,9 @@
 
 FROM centos:8
 
-RUN yum install php70 php70-mysqlnd mysql56-server
-
+RUN cd /etc/yum.repos.d/
+RUN wget http://repos.fedorapeople.org/repos/jkaluza/httpd24/epel-httpd24.repo
+RUN yum install php-fpm php-mysql mysql-server
 
 # # Install PHP
 # RUN apk add php7 php7-fpm
@@ -17,7 +18,7 @@ RUN yum install php70 php70-mysqlnd mysql56-server
 # # Replace existing config file to allow Apache listener
 # COPY www.conf /etc/php7/php-fpm.d/www.conf
 
-# # Start php-fpm service
-# CMD ["/usr/sbin/php-fpm7", "-F", "-R"]
+# Start php-fpm service
+CMD ["/usr/sbin/php-fpm7", "-F", "-R"]
 
 EXPOSE 9000
