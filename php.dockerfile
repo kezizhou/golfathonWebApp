@@ -18,6 +18,8 @@ RUN yum install -y php-fpm php-mysqlnd mysql-server
 # COPY www.conf /etc/php7/php-fpm.d/www.conf
 # COPY www.conf /etc/php-fpm.d/www.conf
 
+RUN mkdir -p /run/php-fpm
+
 # Start php-fpm service
 # CMD ["/usr/sbin/php-fpm7", "-F", "-R"]
 CMD ["/usr/sbin/php-fpm", "-F", "-R"]
