@@ -3,7 +3,7 @@
 
 FROM centos:8
 
-RUN yum install wget
+RUN yum install -y wget
 RUN wget http://repo.mysql.com/mysql80-community-release-el6-1.noarch.rpm
 RUN rpm -Uvh mysql80-community-release-el6-1.noarch.rpm
 RUN yum update -y
