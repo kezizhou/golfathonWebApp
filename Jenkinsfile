@@ -5,7 +5,7 @@ pipeline {
 
     environment {
         IMAGE_LOCATION="kezizhou/golfathon-web-app"
-        EC2_DNS="ip-172-31-25-39.ec2.internal"
+        EC2_DNS="ec2-3-87-174-97.compute-1.amazonaws.com"
     }
 
     stages {
