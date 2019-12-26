@@ -27,9 +27,12 @@ RUN yum install -y httpd
 # RUN sed -i "s/#LoadModule\ deflate_module/LoadModule\ deflate_module/" /etc/apache2/httpd.conf
 
 # Copy apache vhost file to proxy php requests to php-fpm container
+# COPY golfathonapache.conf /usr/local/apache2/conf/golfathonapache.conf
+# RUN echo "Include /usr/local/apache2/conf/golfathonapache.conf" \
+#     >> /etc/apache2/httpd.conf
 COPY golfathonapache.conf /etc/httpd/conf.d/golfathonapache.conf
-RUN echo "Include /usr/local/apache2/conf/golfathonapache.conf" \
-    >> /etc/apache2/httpd.conf
+RUN echo "Include /etc/httpd/conf.d/golfathonapache.conf" \
+    >> /etc/httpd/conf/httpd.conf
 
 # Start httpd service
 CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
