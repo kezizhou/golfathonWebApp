@@ -7,7 +7,7 @@ RUN yum install wget
 RUN wget http://repo.mysql.com/mysql80-community-release-el6-1.noarch.rpm
 RUN rpm -Uvh mysql80-community-release-el6-1.noarch.rpm
 RUN yum update -y
-RUN yum install -y mysql56-server
+RUN yum install -y mysql-server
 
 # Start mysql service
 # CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
