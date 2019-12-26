@@ -11,8 +11,8 @@
 
 FROM centos:8
 
-RUN yum update
-RUN yum install httpd
+RUN yum update -y
+RUN yum install -y httpd
 
 # # Install Apache 
 # RUN apk add apache2

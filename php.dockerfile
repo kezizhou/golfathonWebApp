@@ -8,8 +8,8 @@
 
 FROM centos:8
 
-RUN yum update
-RUN yum install php-fpm php-mysql mysql-server
+RUN yum update -y
+RUN yum install -y php-fpm php-mysql mysql-server
 
 # # Install PHP
 # RUN apk add php7 php7-fpm
