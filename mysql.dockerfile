@@ -10,6 +10,6 @@ RUN yum update -y
 RUN yum install -y mysql-server
 
 # Start mysql service
-# CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+# CMD ["/usr/sbin/mysqld", "-D", "FOREGROUND"]
 
 EXPOSE 3306

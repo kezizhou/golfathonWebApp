@@ -17,14 +17,19 @@ RUN yum install -y httpd
 # # Install Apache 
 # RUN apk add apache2
 
-# # Disable httpd warning
+# Disable httpd warning
 # RUN echo "ServerName localhost" >> /etc/apache2/httpd.conf
 
-# # Enable PHP
+# Enable PHP
 # COPY golfathonapache.conf /etc/apache2/conf.d
 
-# # Add mobdules
-# RUN sed -i "s/#LoadModule\ deflate_module/LoadModule\ deflate_module/" /etc/apache2/httpd.conf 
+# Add mobdules
+# RUN sed -i "s/#LoadModule\ deflate_module/LoadModule\ deflate_module/" /etc/apache2/httpd.conf
+
+# Copy apache vhost file to proxy php requests to php-fpm container
+COPY golfathonapache.conf /etc/httpd/conf.d/golfathonapache.conf
+RUN echo "Include /usr/local/apache2/conf/golfathonapache.conf" \
+    >> /etc/apache2/httpd.conf
 
 # Start httpd service
 CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
