@@ -11,9 +11,8 @@
 
 FROM centos:8
 
-RUN cd /etc/yum.repos.d/
-RUN wget http://repos.fedorapeople.org/repos/jkaluza/httpd24/epel-httpd24.repo
-RUN yum install httpd24
+RUN yum update
+RUN yum install httpd
 
 # # Install Apache 
 # RUN apk add apache2

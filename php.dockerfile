@@ -8,8 +8,7 @@
 
 FROM centos:8
 
-RUN cd /etc/yum.repos.d/
-RUN wget http://repos.fedorapeople.org/repos/jkaluza/httpd24/epel-httpd24.repo
+RUN yum update
 RUN yum install php-fpm php-mysql mysql-server
 
 # # Install PHP
