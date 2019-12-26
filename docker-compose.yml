@@ -23,12 +23,12 @@ services:
         volumes: 
             - ./golfathon/:/var/www/html
           
-    mysql-golfathon-web-app:
-        image: kezizhou/golfathon-web-app:mysql
-        ports:
-            - "3306:3306"
-        environment:
-            MYSQL_RANDOM_ROOT_PASSWORD: 1
+    # mysql-golfathon-web-app:
+    #     image: kezizhou/golfathon-web-app:mysql
+    #     ports:
+    #         - "3306:3306"
+    #     environment:
+    #         MYSQL_RANDOM_ROOT_PASSWORD: 1
 
 secrets:
     mySQLServerName:

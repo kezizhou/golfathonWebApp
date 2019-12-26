@@ -1,13 +1,17 @@
 # FROM alpine:latest
-FROM httpd:2.4-alpine
+# FROM httpd:2.4-alpine
 
-RUN apk update; \
-    apk upgrade;
-# Copy apache vhost file to proxy php requests to php-fpm container
-COPY golfathonapache.conf /usr/local/apache2/conf/golfathonapache.conf
-RUN echo "Include /usr/local/apache2/conf/golfathonapache.conf" \
-    >> /usr/local/apache2/conf/httpd.conf
+# RUN apk update; \
+#     apk upgrade;
+# # Copy apache vhost file to proxy php requests to php-fpm container
+# COPY golfathonapache.conf /usr/local/apache2/conf/golfathonapache.conf
+# RUN echo "Include /usr/local/apache2/conf/golfathonapache.conf" \
+#     >> /usr/local/apache2/conf/httpd.conf
 
+
+FROM centos:8
+
+RUN yum install httpd24
 
 # # Install Apache 
 # RUN apk add apache2
@@ -21,7 +25,7 @@ RUN echo "Include /usr/local/apache2/conf/golfathonapache.conf" \
 # # Add mobdules
 # RUN sed -i "s/#LoadModule\ deflate_module/LoadModule\ deflate_module/" /etc/apache2/httpd.conf 
 
-# # Start httpd service
-# CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+# Start httpd service
+CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
 
 EXPOSE 80
