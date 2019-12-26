@@ -26,8 +26,8 @@ pipeline {
                 // Build and push apache and php images to Docker Hub
                 // sh "docker build -t $IMAGE_LOCATION:apache -f apache.dockerfile ."
                 // sh "docker push $IMAGE_LOCATION:apache"
-                sh "docker build -t $IMAGE_LOCATION:php -f php.dockerfile ."
-                sh "docker push $IMAGE_LOCATION:php"
+                // sh "docker build -t $IMAGE_LOCATION:php -f php.dockerfile ."
+                // sh "docker push $IMAGE_LOCATION:php"
                 sh "docker build -t $IMAGE_LOCATION:mysql -f mysql.dockerfile ."
                 sh "docker push $IMAGE_LOCATION:mysql"
             }
