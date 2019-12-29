@@ -5,7 +5,7 @@ pipeline {
 
     environment {
         IMAGE_LOCATION="kezizhou/golfathon-web-app"
-        EC2_DNS="ec2-3-87-174-97.compute-1.amazonaws.com"
+        EC2_DNS="ec2-54-159-56-58.compute-1.amazonaws.com"
     }
 
     stages {
@@ -28,15 +28,15 @@ pipeline {
                 sh "docker push $IMAGE_LOCATION:apache"
                 sh "docker build -t $IMAGE_LOCATION:php -f php.dockerfile ."
                 sh "docker push $IMAGE_LOCATION:php"
-                sh "docker build -t $IMAGE_LOCATION:mysql -f mysql.dockerfile ."
-                sh "docker push $IMAGE_LOCATION:mysql"
+                // sh "docker build -t $IMAGE_LOCATION:mysql -f mysql.dockerfile ."
+                // sh "docker push $IMAGE_LOCATION:mysql"
             }
             post {
                 always {
                     // Clean images
                     sh "docker rmi $IMAGE_LOCATION:apache"
                     sh "docker rmi $IMAGE_LOCATION:php"
-                    sh "docker rmi $IMAGE_LOCATION:mysql"
+                    // sh "docker rmi $IMAGE_LOCATION:mysql"
                     sh "docker image prune -f"
                 }
             }
