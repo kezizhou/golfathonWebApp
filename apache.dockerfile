@@ -1,4 +1,5 @@
 FROM httpd:2.4-alpine
+# Starts Apache service by default
 
 RUN apk update; \
     apk upgrade;
@@ -6,8 +7,5 @@ RUN apk update; \
 COPY golfathonapache.conf /usr/local/apache2/conf/golfathonapache.conf
 RUN echo "Include /usr/local/apache2/conf/golfathonapache.conf" \
     >> /usr/local/apache2/conf/httpd.conf
-
-# Start httpd service
-CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
 
 EXPOSE 80
