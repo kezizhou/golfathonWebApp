@@ -44,7 +44,7 @@
                 if( (time() - $_SESSION['loginTime']) < $loginDuration ) {
                     return;
                 } else {
-                    header("Location: " . dirname($_SERVER['REQUEST_URI'], 2) . "default_site/Login/login.php?sessionExpired=1", true);
+                    header("Location: " . dirname($_SERVER['REQUEST_URI'], 3) . "/default_site/Login/login.php?sessionExpired=1", true);
                 }
             } else {
                 // Login expired
@@ -52,7 +52,7 @@
             }
         } catch (Exception $e) {
             echo $e;
-            header("Location: " . dirname($_SERVER['REQUEST_URI'], 2) . "default_site/Login/login.php?sessionExpired=1", true);
+            header("Location: " . dirname($_SERVER['REQUEST_URI'], 3) . "/default_site/Login/login.php?sessionExpired=1", true);
         }
     }
 ?>
