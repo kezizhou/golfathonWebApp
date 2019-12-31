@@ -9,14 +9,18 @@
 
         if( !isset($conn) ) {
             // Get Docker secret paths and values from the files
-            $astrConfig = array();
-            $astrConfig['servername'] = file_get_contents( getenv('mySQLServerNameFile', true) );
-            $astrConfig['username'] = file_get_contents( getenv('mySQLUsernameFile', true) );
-            $astrConfig['password'] = file_get_contents( getenv('mySQLPasswordFile', true) );
-            $astrConfig['dbname'] = file_get_contents( getenv('mySQLDBNameFile', true) );
+            $strServerName = file_get_contents( getenv('mySQLServerNameFile', true) );
+            $strUsername = file_get_contents( getenv('mySQLUsernameFile', true) );
+            $strPassword = file_get_contents( getenv('mySQLPasswordFile', true) );
+            $strDBName = file_get_contents( getenv('mySQLDBNameFile', true) );
+            $astrConfig = array( "servername"=>$strServerName, "username"=>$strUsername, "password"=>$strPassword, "dbname"=>$strDBName );
+            // $astrConfig['servername'] = file_get_contents( getenv('mySQLServerNameFile', true) );
+            // $astrConfig['username'] = file_get_contents( getenv('mySQLUsernameFile', true) );
+            // $astrConfig['password'] = file_get_contents( getenv('mySQLPasswordFile', true) );
+            // $astrConfig['dbname'] = file_get_contents( getenv('mySQLDBNameFile', true) );
 
             // Create connection
-            $conn = mysqli_connect($astrConfig['servername'], $astrConfig['username'], $astrConfig['password'], $astrConfig['dbname']);
+            $conn = mysqli_connect( $astrConfig['servername'], $astrConfig['username'], $astrConfig['password'], $astrConfig['dbname'] );
         }
 
         // Check connection
