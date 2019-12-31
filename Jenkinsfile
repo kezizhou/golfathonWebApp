@@ -66,7 +66,6 @@ pipeline {
                     }
                     // Build and deploy from Docker Compose file
                     sh "scp docker-compose.yml ec2-user@$EC2_DNS:/home/ec2-user"
-                    sh "ssh -o StrictHostKeyChecking=no -l ec2-user $EC2_DNS -a 'echo $mySQLDBName | docker secret create mySQLDBName -' || exit 0"
 
                     // Copy files from GitHub to server
                     // Make directory if it doesn't exist
