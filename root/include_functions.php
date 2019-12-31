@@ -44,7 +44,7 @@
                 if( (time() - $_SESSION['loginTime']) < $loginDuration ) {
                     return;
                 } else {
-                    header("Location: " . __DIR__ . "/default_site/Login/login.php?sessionExpired=1", true);
+                    header("Location: default_site/Login/login.php?sessionExpired=1", true);
                 }
             } else {
                 // Login expired
@@ -52,7 +52,7 @@
             }
         } catch (Exception $e) {
             echo $e;
-            header("Location: " . __DIR__ . "/default_site/Login/login.php?sessionExpired=1", true);
+            header("Location: default_site/Login/login.php?sessionExpired=1", true);
         }
     }
 ?>
