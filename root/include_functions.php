@@ -38,7 +38,7 @@
 
     function checkLoginExpire() {
         session_start();
-        $loginDuration = 360;
+        $loginDuration = 3600;
         try {
             if( isset($_SESSION['loginTime']) ) {
                 if( (time() - $_SESSION['loginTime']) < $loginDuration ) {

@@ -9,6 +9,7 @@
 	<head>
 	
 		<meta charset=utf-8>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6/html5shiv.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="/styles/home.css" media="screen">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Salsa&display=swap" >
@@ -114,9 +115,9 @@
 			<div class="navbar-right"> 
 				<a class="navbar-right" href="<?php echo $rootSite . "/Logout/logout.php";?>"> Logout </a>
 			</div>
+
+			<a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="responsiveNavbar()">&#9776;</a>
 		</div>
-			
-		<a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="responsiveNavbar()">&#9776;</a>
 
 		<script type="text/javascript"> 
 			function responsiveNavbar() {
