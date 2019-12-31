@@ -58,14 +58,12 @@
 			$rootSite = "/admin_site"
 		?>
 	
-		<div class="navbar">
+		<div class="navbar" id="navbar">
 			<a class="<?php 
 				switch( $currentPage ) {
 					case "admin_home.php":
 						echo "active";
 						break;
-					default:
-						echo "inactive";
 				}
 				?>" href="<?php echo $rootSite . "/Admin_Home/admin_home.php";?>"> Admin Home </a>
 				
@@ -78,8 +76,6 @@
 							case "update_corp_sponsorship.php":
 								echo "active";
 								break;
-							default:
-								echo "inactive";
 						}
 						?> dropBtn"> Corporate Sponsorship Management 
 					<i class="fa fa-caret-down"></i>
@@ -91,8 +87,6 @@
 							case "add_corp_sponsorship.php":
 								echo "active";
 								break;
-							default:
-								echo "inactive";
 						}
 						?>" href="<?php echo $rootSite . "/Corporate_Sponsorship_Management/add_corp_sponsorship.php";?>"> Add New </a>
 						
@@ -102,8 +96,6 @@
 							case "update_corp_sponsorship.php":
 								echo "active";
 								break;
-							default:
-								echo "inactive";
 						}
 						?>" href="<?php echo $rootSite . "/Corporate_Sponsorship_Management/manage_corp_sponsorships.php";?>"> Manage Existing </a>
 				</div>
@@ -116,8 +108,6 @@
 					case "update_golfer_sponsor.php":
 						echo "active";
 						break;
-					default:
-						echo "inactive";
 				}
 				?>" href="<?php echo $rootSite . "/Golfer_Sponsors_Management/manage_golfer_sponsors.php";?>"> Golfer/Sponsors Management </a>
 				
