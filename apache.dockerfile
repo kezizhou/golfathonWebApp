@@ -9,8 +9,4 @@ COPY golfathonapache.conf /usr/local/apache2/conf/golfathonapache.conf
 RUN echo "Include /usr/local/apache2/conf/golfathonapache.conf" \
     >> /usr/local/apache2/conf/httpd.conf
 
-# Enable javascript
-RUN echo "AddType text/javascript .js" \
-    >> /usr/local/apache2/conf/httpd.conf
-
 EXPOSE 80
