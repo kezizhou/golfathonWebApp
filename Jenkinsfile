@@ -55,19 +55,26 @@ pipeline {
                     // Create Docker secrets
                     // If already exists, exit 0
                     withCredentials([string(credentialsId: 'golfathonMySQLServerName', variable: 'mySQLServerName')]) {
-                        sh "ssh -o StrictHostKeyChecking=no -l ec2-user $EC2_DNS -a 'echo $mySQLServerName | docker secret create mySQLServerName' - || exit 0"
+                        sh "ssh -o StrictHostKeyChecking=no -l ec2-user $EC2_DNS -a 'echo $mySQLServerName | docker secret create mySQLServerName -' || exit 0"
                     }
                     withCredentials([usernamePassword(credentialsId: 'golfathonMySQLUser', usernameVariable: 'mySQLUsername', passwordVariable: 'mySQLPassword')]) {
-                        sh "ssh -o StrictHostKeyChecking=no -l ec2-user $EC2_DNS -a 'echo $mySQLUsername | docker secret create mySQLUsername' - || exit 0"
-                        sh "ssh -o StrictHostKeyChecking=no -l ec2-user $EC2_DNS -a 'echo $mySQLPassword | docker secret create mySQLPassword' - || exit 0"
+                        sh "ssh -o StrictHostKeyChecking=no -l ec2-user $EC2_DNS -a 'echo $mySQLUsername | docker secret create mySQLUsername -' || exit 0"
+                        sh "ssh -o StrictHostKeyChecking=no -l ec2-user $EC2_DNS -a 'echo $mySQLPassword | docker secret create mySQLPassword -' || exit 0"
                     }
                     withCredentials([string(credentialsId: 'golfathonMySQLDBName', variable: 'mySQLDBName')]) {
-                        sh "ssh -o StrictHostKeyChecking=no -l ec2-user $EC2_DNS -a 'echo $mySQLDBName | docker secret create mySQLDBName' - || exit 0"
+                        sh "ssh -o StrictHostKeyChecking=no -l ec2-user $EC2_DNS -a 'echo $mySQLDBName | docker secret create mySQLDBName -' || exit 0"
                     }
                     // Build and deploy from Docker Compose file
                     sh "scp docker-compose.yml ec2-user@$EC2_DNS:/home/ec2-user"
+                    sh "ssh -o StrictHostKeyChecking=no -l ec2-user $EC2_DNS -a 'echo $mySQLDBName | docker secret create mySQLDBName -' || exit 0"
+
+                    // Copy files from GitHub to server
+                    // Make directory if it doesn't exist
+                    sh "ssh -o StrictHostKeyChecking=no -l ec2-user $EC2_DNS -a 'mkdir -p /home/ec2-user/golfathon/'"
                     // "/*" required to replace any existing files
                     sh "scp -r root/* ec2-user@$EC2_DNS:/home/ec2-user/golfathon/"
+
+                    // Deploy stack with Docker Compose
                     sh "ssh -o StrictHostKeyChecking=no -l ec2-user $EC2_DNS -a 'docker stack deploy -c docker-compose.yml golfathon-web-app'"
                 }
             }
