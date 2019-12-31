@@ -13,7 +13,7 @@
 	$currentPage = basename($_SERVER['PHP_SELF']);
 	include('../default_header.php');
 ?>
-		
+
 <div class="main">
 	<?php
 		require('custom_exceptions.php');
@@ -35,7 +35,7 @@
 							header("Location: ../../admin_site/Admin_Home/admin_home.php", true, 301);
 							exit();
 						// Hashed password doesn't match
-						} else{
+						} else {
 							throw new InvalidCredentialException();
 						}
 					}
