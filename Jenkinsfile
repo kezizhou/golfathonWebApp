@@ -5,7 +5,7 @@ pipeline {
 
     environment {
         IMAGE_LOCATION="kezizhou/golfathon-web-app"
-        EC2_DNS="ec2-54-86-40-176.compute-1.amazonaws.com"
+        EC2_DNS="ec2-3-82-48-131.compute-1.amazonaws.com"
     }
 
     stages {
@@ -66,6 +66,7 @@ pipeline {
                     }
                     // Build and deploy from Docker Compose file
                     sh "scp docker-compose.yml ec2-user@$EC2_DNS:/home/ec2-user"
+                    // "/*" required to replace any existing files
                     sh "scp -r root/* ec2-user@$EC2_DNS:/home/ec2-user/golfathon/"
                     sh "ssh -o StrictHostKeyChecking=no -l ec2-user $EC2_DNS -a 'docker stack deploy -c docker-compose.yml golfathon-web-app'"
                 }

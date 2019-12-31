@@ -1,11 +1,13 @@
+<?php
+	session_start();
+?>
+
 <!-- -------------------------------------------------------------------------------- -->
 <!-- Name: Keziah Zhou                                                                -->
 <!-- Abstract: Process Login and Check Credentials Page							  	  -->
 <!-- -------------------------------------------------------------------------------- -->
 
 <?php
-	session_start();
-
 	// Header
 	$strPageTitle = "Login";
 	$currentPage = basename($_SERVER['PHP_SELF']);
