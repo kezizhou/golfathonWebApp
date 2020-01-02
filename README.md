@@ -6,6 +6,7 @@ This application runs on an Apache Web server with PHP. The design utilizes Jenk
 ## Sections:  
 [AWS](#aws)  
 [Jenkins](#jenkins)  
+[Database](#database)
 [Docker "master" Branch](#1-docker---master-branch)  
 [Chef "s3basic" Branch](#2-chef---s3basic-branch)  
 [Enhancements and Best Practices](#enhancements-and-best-practices)  
@@ -42,6 +43,10 @@ The Jenkinsfiles allow for the automated build and push of images to Docker Hub,
 !["s3basic" Branch Jenkins Piepline](documentation/demos/jenkinsS3BasicPipeline.png)
 
 [Back to Top](#golfathonWebApp)
+
+### Database
+Below is the Entity Relationship Diagram for the mySQL database of this application:
+!["Golfathon Database ERD"](documentation/diagrams/golfathonERD.pdf)
 
 There are 2 methods that could be used to automate this application, which have been separated by Git branches:  
 
