@@ -14,15 +14,13 @@ This application runs on an Apache Web server with PHP. The design utilizes Jenk
 ### AWS
 This web app utilizes AWS for infrastructure and security. 
 
-AWS Setup:  
-
-##### CloudFormation Templates
+#### CloudFormation Templates
 Templatized resources [here](https://github.com/kezizhou/golfathonWebApp/blob/master/aws/)
 
-##### S3 Bucket
+#### S3 Bucket
 ![Golfathon S3 Bucket](documentation/demos/s3bucket.png)  
 
-##### IAM
+#### IAM
 IAM Role: golfathon-role
 * [Permissions:](https://github.com/kezizhou/golfathonWebApp/blob/master/aws/cft-iam-role-golfathon.yml)
     * EC2
