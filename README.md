@@ -30,7 +30,7 @@ IAM Role: [golfathon-role](https://github.com/kezizhou/golfathonWebApp/blob/mast
     * KMS
     * Logs  
 
-[Back to Top](#golfathonWebApp)
+**[Back to Top](#golfathonWebApp)**
 
 ***
 ### Jenkins
@@ -44,13 +44,13 @@ The Jenkinsfiles allow for the automated build and push of images to Docker Hub,
     * Upon a push to the s3basic branch, all files in the root directory of the GitHub Repo are pushed to an S3 bucket.
 !["s3basic" Branch Jenkins Piepline](documentation/demos/jenkinsS3BasicPipeline.png)
 
-[Back to Top](#golfathonWebApp)
+**[Back to Top](#golfathonWebApp)**
 
 ***
 ### Database
 Please go [here](https://github.com/kezizhou/golfathonWebApp/blob/master/documentation/diagrams/golfathonERD.pdf) to see the Entity Relationship Diagram for the mySQL database of this application.
 
-[Back to Top](#golfathonWebApp)
+**[Back to Top](#golfathonWebApp)**
 
 ***
 There are 2 methods that could be used to automate this application, which have been separated by Git branches:  
@@ -62,9 +62,9 @@ In this method, the Apache Docker container is exposed on ports 80, and the webs
 
 !["master" Branch Diagram](documentation/diagrams/golfathonWebAppMaster.png)  
 
-To see the Docker Hub repository for this application, please go [here]("https://hub.docker.com/repository/docker/kezizhou/golfathon-web-app").  
+To see the Docker Hub repository for this application, please go [here](https://hub.docker.com/repository/docker/kezizhou/golfathon-web-app).  
 
-[Back to Top](#golfathonWebApp)
+**[Back to Top](#golfathonWebApp)**
 
 ***
 ### 2. Chef - "s3basic" Branch
@@ -73,7 +73,7 @@ In this method, all webpage components are loaded on the server itself, and the 
 
 !["s3basic" Branch Diagram](documentation/diagrams/golfathonWebAppS3Basic.png)  
 
-[Back to Top](#golfathonWebApp)
+**[Back to Top](#golfathonWebApp)**
 
 ***
 ### Enhancements and Best Practices
@@ -91,7 +91,7 @@ This project started as a basic web app that allowed for user interaction to sub
     * A 60 minute session timeout was added to the admin page, which automatically redirects the user back to login.php along with a timeout message upon expiration. 
     * Adjustments were made to the navigation bar and tables to add responsive design for mobile devices  
 
-[Back to Top](#golfathonWebApp)
+**[Back to Top](#golfathonWebApp)**
 
 ***
 ### Demonstrations of Website
@@ -110,4 +110,4 @@ Responsive Table for Mobile Devices:
 Responsive Navigation Bar for Mobile Devices:  
 <img src="documentation/demos/responsiveNavbar.jpg" width="268.5">  
 
-[Back to Top](#golfathonWebApp)
+**[Back to Top](#golfathonWebApp)**
