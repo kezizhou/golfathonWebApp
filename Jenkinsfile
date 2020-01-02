@@ -9,15 +9,30 @@ pipeline {
     }
 
     stages {
+        stage('Push to S3') {
+            options {
+                timeout( time: 5, unit: "MINUTES")
+            }
+            when {
+                // Push to "s3basic" branch
+                // GitHub webook "Payload URL" format: http://<EC2 Public DNS>:8080/github-webhook/
+                beforeAgent true
+                branch "s3basic"
+            }
+            steps {
+                withAWS(region: 'us-east-1', credentials: 'AWSJenkinsUser') {
+                    s3Upload(file: 'root/', bucket: 'golfathon-web-app-dev')
+                }
+            }
+        }
         stage('Docker Image Push') {
             options {
                 timeout( time: 5, unit: "MINUTES" )
             }
             when {
-                // Push to "docker" branch
-                // GitHub webook "Payload URL" format: http://<EC2 Public DNS>:8080/github-webhook/
+                // Push to "master" branch
                 beforeAgent true
-                branch "docker"
+                branch "master"
             }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'DockerUser', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
@@ -43,9 +58,9 @@ pipeline {
                 timeout( time: 5, unit: "MINUTES" )
             }
             when {
-                // Push to "docker" branch
+                // Push to "master" branch
                 beforeAgent true
-                branch "docker"
+                branch "master"
             }
             steps {
                 sshagent(['golfathonEC2SSH']) {
