@@ -46,8 +46,8 @@ The Jenkinsfiles allow for the automated build and push of images to Docker Hub,
 There are 2 methods that could be used to automate this application, which have been separated by Git branches:  
 
 ### 1. Docker - "master" Branch
-This branch contains a Dockerfile that is used to build a Docker image of the application. This Dockerfile installs Apache, PHP, and MySQL, exposes the ports, and starts the services. It copies the PHP scripts and files from the repo to the container. This image can then be pulled from Docker Hub to the server(s). 
-In this method, the Apache Docker container is exposed on ports 80, and the page can be viewed by going to http://localhost:80.
+This branch contains a Dockerfile that is used to build a Docker image of the application. This Dockerfile installs Apache, PHP, and MySQL functions, exposes the ports, and starts the services. It copies the PHP scripts and files from the repo to the container. This image can then be pulled from Docker Hub to the server(s). 
+In this method, the Apache Docker container is exposed on ports 80, and the website can be viewed by going to http://[Public DNS of EC2 Instance]:80.
 
 !["master" Branch Diagram](documentation/diagrams/golfathonWebAppMaster.png)  
 
@@ -57,8 +57,7 @@ To see the Docker Hub repository for this application, please go [here]("https:/
 
 ### 2. Chef - "s3basic" Branch
 This branch contains a sample Chef cookbook that could be used to set up this web app. This becomes advantageous for larger applications, since this allows for better automation of the server install and setup. Even if the server is damaged, Chef can run the cookbook and bring the server back to the desired state.
-In this method, the page can be viewed by going to the public DNS of the EC2 instance the server is running on. 
-The Jenkinsfile in this branch pushes the PHP files from the repo to an S3 bucket.
+In this method, all webpage components are loaded on the server itself, and the page can be viewed by going to the public DNS of the EC2 instance.
 
 !["s3basic" Branch Diagram](documentation/diagrams/golfathonWebAppS3Basic.png)  
 
