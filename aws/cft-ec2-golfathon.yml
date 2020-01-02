@@ -1,0 +1,75 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "EC2 Instance and Security Group for Golfathon Web App"
+Parameters:
+  stackName:
+    Default: "cft-ec2-golfathon-dev"
+    Description: "Name of stack"
+    Type: String
+  VPCID:
+    Default: "vpc-e8069d92"
+    Description: "ID of VPC to deploy in"
+    Type: String
+  AZ:
+    Default: "us-east-1b"
+    Description: "Availability Zone"
+    Type: String
+  SubnetID: 
+    Default: "subnet-59170913"
+    Description: "Subnet to deploy to"
+    Type: "String"
+  AMIID:
+    Default: "ami-00eb20669e0990cb4"
+    Description: "ID of AMI to create EC2 instance from"
+    Type: String
+  env:
+    Default: "dev"
+    Description: "Environment of instance: dev, qa, or prod"
+    Type: String
+Resources:
+  golfathonSGDev:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow web and SSH connections
+      VpcId: !Ref VPCID
+      SecurityGroupIngress:
+      - IpProtocol: tcp
+        FromPort: 80
+        ToPort: 80
+        CidrIp: 0.0.0.0/0
+      - IpProtocol: tcp
+        FromPort: 443
+        ToPort: 443
+        CidrIp: 0.0.0.0/0
+      - IpProtocol: tcp
+        FromPort: 22
+        ToPort: 22
+        CidrIp: 4.15.102.130/32
+      SecurityGroupEgress:
+      - IpProtocol: -1
+        FromPort: -1
+        ToPort: 65535
+        CidrIp: 0.0.0.0/0
+      Tags:
+      - Key: Name
+        Value: "golfathonSGDev"
+      - Key: env
+        Value: !Ref env
+  golfathonEC2Dev:
+    Type: AWS::EC2::Instance
+    Properties:
+      AvailabilityZone: !Ref AZ
+      ImageId: !Ref AMIID
+      InstanceType: t2.micro
+      KeyName: golfathon-keypair
+      IamInstanceProfile: "golfathon-role"
+      SubnetId: !Ref SubnetID
+      SecurityGroupIds:
+        - Ref: golfathonSGDev
+      Tags:
+      - Key: Name
+        Value: "golfathonEC2Dev"
+      - Key: stackName
+        Value: !Ref stackName
+      - Key: env
+        Value: !Ref env
+    DependsOn: golfathonSGDev
