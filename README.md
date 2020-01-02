@@ -4,6 +4,7 @@ golfathonWebApp is a web application for a Golfathon Event that allows the user 
 This application runs on an Apache Web server with PHP. The design utilizes Jenkins technologies and Docker technologies such as Docker Secrets, Docker Swarm, and Docker Compose to allow for automation and increased security.  
 
 ## Sections:  
+***
 [AWS](#aws)  
 [Jenkins](#jenkins)  
 [Database](#database)  
