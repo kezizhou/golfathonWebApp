@@ -6,12 +6,13 @@ This application runs on an Apache Web server with PHP. The design utilizes Jenk
 ## Sections:  
 [AWS](#aws)  
 [Jenkins](#jenkins)  
-[Database](#database)
+[Database](#database)  
 [Docker "master" Branch](#1-docker---master-branch)  
 [Chef "s3basic" Branch](#2-chef---s3basic-branch)  
 [Enhancements and Best Practices](#enhancements-and-best-practices)  
 [Demonstrations of Website](#demonstrations-of-website)  
 
+***
 ### AWS
 This web app utilizes AWS for infrastructure and security. 
 
@@ -31,6 +32,7 @@ IAM Role: [golfathon-role](https://github.com/kezizhou/golfathonWebApp/blob/mast
 
 [Back to Top](#golfathonWebApp)
 
+***
 ### Jenkins
 The Jenkinsfiles allow for the automated build and push of images to Docker Hub, as well as pushing files to S3. The Jenkinsfile is triggered by pushes to the "master" and "s3basic" branches. 
 
@@ -44,13 +46,16 @@ The Jenkinsfiles allow for the automated build and push of images to Docker Hub,
 
 [Back to Top](#golfathonWebApp)
 
+***
 ### Database
 Please go [here](https://github.com/kezizhou/golfathonWebApp/blob/master/documentation/diagrams/golfathonERD.pdf) to see the Entity Relationship Diagram for the mySQL database of this application.
 
 [Back to Top](#golfathonWebApp)
 
+***
 There are 2 methods that could be used to automate this application, which have been separated by Git branches:  
 
+***
 ### 1. Docker - "master" Branch
 This branch contains a Dockerfile that is used to build a Docker image of the application. This Dockerfile installs Apache, PHP, and MySQL functions, exposes the ports, and starts the services. It copies the PHP scripts and files from the repo to the container. This image can then be pulled from Docker Hub to the server(s). 
 In this method, the Apache Docker container is exposed on ports 80, and the website can be viewed by going to http://[Public DNS of EC2 Instance]:80.
@@ -61,6 +66,7 @@ To see the Docker Hub repository for this application, please go [here]("https:/
 
 [Back to Top](#golfathonWebApp)
 
+***
 ### 2. Chef - "s3basic" Branch
 This branch contains a sample Chef cookbook that could be used to set up this web app. This becomes advantageous for larger applications, since this allows for better automation of the server install and setup. Even if the server is damaged, Chef can run the cookbook and bring the server back to the desired state.
 In this method, all webpage components are loaded on the server itself, and the page can be viewed by going to the public DNS of the EC2 instance.
@@ -69,6 +75,7 @@ In this method, all webpage components are loaded on the server itself, and the 
 
 [Back to Top](#golfathonWebApp)
 
+***
 ### Enhancements and Best Practices
 This project started as a basic web app that allowed for user interaction to submit data to a MySQL database. Since then, some enhancements have been made to follow best practices and to add features:
 * Best Practices:
@@ -86,6 +93,7 @@ This project started as a basic web app that allowed for user interaction to sub
 
 [Back to Top](#golfathonWebApp)
 
+***
 ### Demonstrations of Website
 Default Page:
 !["Default Page Demo"](documentation/demos/defaultPageDemo.gif)
