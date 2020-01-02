@@ -1,0 +1,83 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: "Auto Scaling Group for Golfathon Web App"
+Parameters:
+  stackName:
+    Default: "cft-asg-golfathon-dev"
+    Description: "Name of stack"
+    Type: String
+  VPCID:
+    Default: "vpc-e8069d92"
+    Description: "ID of VPC to deploy in"
+    Type: String
+  AZ:
+    Default: "us-east-1b"
+    Description: "Availability Zone"
+    Type: String
+  SubnetID: 
+    Default: "subnet-59170913"
+    Description: "Subnet to deploy to"
+    Type: String
+  AMIID:
+    Default: "ami-00068cd7555f543d5"
+    Description: "ID of AMI to create EC2 instance from"
+    Type: String
+  env:
+    Default: "dev"
+    Description: "Environment of instance: dev, qa, or prod"
+    Type: String
+  golfathonSG:
+    Default: "sg-0da1eb45c6d02c820"
+    Description: "ID of security group for Golfathon Web App"
+    Type: String
+Resources:
+  LaunchTemplate:
+    Type: AWS::EC2::LaunchTemplate
+    Properties: 
+      LaunchTemplateName: lt-asg-golfathon-dev
+      LaunchTemplateData: 
+        ImageId: !Ref AMIID
+        InstanceType: t2.micro
+        KeyName: golfathon-keypair
+        IamInstanceProfile: 
+          Name: "golfathon-role"
+        SecurityGroupIds: 
+          - !Ref golfathonSG
+        TagSpecifications:
+          - ResourceType: instance
+            Tags:      
+            - Key: Name
+              Value: "golfathonEC2Dev"
+        UserData:
+          Fn::Base64:
+            !Join
+              - "\n"
+              - - "#!/bin/bash"
+                - "amazon-linux-extras install docker"
+                - "service docker start"
+                - "usermod -a -G docker ec2-user"
+                - "chkconfig docker on"
+                - "yum install -y git"
+                - "yum update -y"
+  golfathonASGDev:
+    Type: AWS::AutoScaling::AutoScalingGroup
+    Properties:
+      AutoScalingGroupName: golfathonASGDev
+      AvailabilityZones: 
+        - !Ref AZ
+      MinSize: "0"
+      MaxSize: "1"
+      DesiredCapacity: "0"
+      HealthCheckGracePeriod: 300
+      LaunchTemplate:
+        LaunchTemplateId: !Ref LaunchTemplate
+        Version: !GetAtt LaunchTemplate.LatestVersionNumber
+      VPCZoneIdentifier:
+        - !Ref SubnetID
+      Tags:
+        - Key: stackName
+          Value: !Ref stackName
+          PropagateAtLaunch: "true"
+        - Key: env
+          Value: !Ref env
+          PropagateAtLaunch: "true"
+    DependsOn: LaunchTemplate

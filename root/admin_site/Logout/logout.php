@@ -1,3 +1,8 @@
+<?php
+	session_start();
+	ob_start();
+?>
+
 <!-- -------------------------------------------------------------------------------- -->
 <!-- Name: Keziah Zhou                                                                -->
 <!-- Abstract: Process Logout													  	  -->
@@ -16,7 +21,6 @@
 	<body>
 		
 		<?php
-			session_start();
 			unset($_SESSION);
 			session_destroy();
 			

@@ -1,1 +1,0 @@
-default['golfathonWebApp']['variable'] = ''

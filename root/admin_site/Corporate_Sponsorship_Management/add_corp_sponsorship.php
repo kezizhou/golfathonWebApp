@@ -1,3 +1,8 @@
+<?php
+	session_start();
+	ob_start();
+?>
+
 <!-- -------------------------------------------------------------------------------- -->
 <!-- Name: Keziah Zhou                                                                -->
 <!-- Abstract: Add New Corporate Sponsorship Page									  -->

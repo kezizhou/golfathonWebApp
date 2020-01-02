@@ -1,0 +1,34 @@
+version: '3.7'
+services:
+    apache-golfathon-web-app:
+        image: kezizhou/golfathon-web-app:apache
+        ports:
+            - "80:80"
+        volumes:
+            - ./golfathon/:/var/www/html
+    php-golfathon-web-app:
+        image: kezizhou/golfathon-web-app:php
+        ports:
+            - "9000:9000"
+        environment:
+            mySQLServerNameFile: /run/secrets/mySQLServerName
+            mySQLUsernameFile: /run/secrets/mySQLUsername
+            mySQLPasswordFile: /run/secrets/mySQLPassword
+            mySQLDBNameFile: /run/secrets/mySQLDBName
+        secrets: 
+            - mySQLServerName
+            - mySQLUsername
+            - mySQLPassword
+            - mySQLDBName
+        volumes: 
+            - ./golfathon/:/var/www/html
+
+secrets:
+    mySQLServerName:
+        external: true
+    mySQLUsername:
+        external: true
+    mySQLPassword:
+        external: true
+    mySQLDBName:
+        external: true

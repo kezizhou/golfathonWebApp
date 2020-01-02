@@ -1,3 +1,8 @@
+<?php
+	session_start();
+	ob_start();
+?>
+
 <!-- -------------------------------------------------------------------------------- -->
 <!-- Name: Keziah Zhou                                                                -->
 <!-- Abstract: Golfer/Sponsors Management Page										  -->
@@ -7,7 +12,7 @@
 	// Header
 	$strPageTitle = "Manage Golfer/Sponsors";
 	$currentPage = basename($_SERVER['PHP_SELF']);
-	$astrCustomCSS = array("../../styles/responsive_table.css", "../../styles/manage_golfer_sponsor.css");
+	$astrCustomCSS = array("../../styles/responsive_table.css", "../../styles/manage_golfer_sponsors.css");
 	include('../admin_header.php');
 	checkLoginExpire();
 ?>
