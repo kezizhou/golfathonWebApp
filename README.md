@@ -21,8 +21,8 @@ Templatized resources [here](https://github.com/kezizhou/golfathonWebApp/blob/ma
 ![Golfathon S3 Bucket](documentation/demos/s3bucket.png)  
 
 #### IAM
-IAM Role: golfathon-role
-* [Permissions:](https://github.com/kezizhou/golfathonWebApp/blob/master/aws/cft-iam-role-golfathon.yml)
+IAM Role: [golfathon-role](https://github.com/kezizhou/golfathonWebApp/blob/master/aws/cft-iam-role-golfathon.yml)
+* Permissions:
     * EC2
     * S3
     * KMS
