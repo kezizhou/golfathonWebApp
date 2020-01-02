@@ -6,8 +6,8 @@ This application runs on an Apache Web server with PHP. The design utilizes Jenk
 ## Sections:  
 [AWS](#aws)  
 [Jenkins](#jenkins)  
-[Docker "master" Branch](#1-docker---master-branch-master-branch)  
-[Chef "s3basic" Branch](#2-chef---s3basic-branch-s3basic-branch)  
+[Docker "master" Branch](#1-docker---master-branch)  
+[Chef "s3basic" Branch](#2-chef---s3basic-branch)  
 [Enhancements and Best Practices](#enhancements-and-best-practices)  
 [Demonstrations of Website](#demonstrations-of-website)
 
