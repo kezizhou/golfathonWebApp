@@ -118,11 +118,6 @@
 
 			<a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="responsiveNavbar()">&#9776;</a>
 		</div>
-<<<<<<< HEAD
-			
-		<a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="responsiveNavbar()">&#9776;</a>
-=======
->>>>>>> docker
 
 		<script type="text/javascript"> 
 			function responsiveNavbar() {
