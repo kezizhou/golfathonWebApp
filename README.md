@@ -45,8 +45,9 @@ The Jenkinsfiles allow for the automated build and push of images to Docker Hub,
 [Back to Top](#golfathonWebApp)
 
 ### Database
-Below is the Entity Relationship Diagram for the mySQL database of this application:
-!["Golfathon Database ERD"](documentation/diagrams/golfathonERD.pdf)
+Please go [here](https://github.com/kezizhou/golfathonWebApp/blob/master/documentation/diagrams/golfathonERD.pdf) to see the Entity Relationship Diagram for the mySQL database of this application.
+
+[Back to Top](#golfathonWebApp)
 
 There are 2 methods that could be used to automate this application, which have been separated by Git branches:  
 
