@@ -62,7 +62,7 @@ In this method, the Apache Docker container is exposed on ports 80, and the webs
 
 !["master" Branch Diagram](documentation/diagrams/golfathonWebAppMaster.png)  
 
-To see the Docker Hub repository for this application, please go [here](https://hub.docker.com/repository/docker/kezizhou/golfathon-web-app).  
+To see the Docker Hub repository for this application, please go [here](https://hub.docker.com/r/kezizhou/golfathon-web-app).  
 
 **[Back to Top](#golfathonWebApp)**
 
