@@ -62,7 +62,7 @@ In this method, the Apache Docker container is exposed on ports 80, and the webs
 
 !["master" Branch Diagram](documentation/diagrams/golfathonWebAppMaster.png)  
 
-To see the Docker Hub repository for this application, please go [here](https://hub.docker.com/repository/docker/kezizhou/golfathon-web-app).  
+To see the Docker Hub repository for this application, please go [here](https://hub.docker.com/r/kezizhou/golfathon-web-app).  
 
 **[Back to Top](#golfathonWebApp)**
 
@@ -70,7 +70,7 @@ To see the Docker Hub repository for this application, please go [here](https://
 ### 2. Chef - "s3basic" Branch
 [This](https://github.com/kezizhou/golfathonWebApp/tree/s3basic) branch contains a sample Chef cookbook that could be used to set up this web app. This becomes advantageous for larger applications, since this allows for better automation of the server install and setup. Even if the server is damaged, Chef can run the cookbook and bring the server back to the desired state.
 In this method, all webpage components are loaded on the server itself, and the page can be viewed by going to the public DNS of the EC2 instance.
- 
+
 !["s3basic" Branch Diagram](documentation/diagrams/golfathonWebAppS3Basic.png)  
 
 **[Back to Top](#golfathonWebApp)**
