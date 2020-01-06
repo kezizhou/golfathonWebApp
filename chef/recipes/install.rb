@@ -4,6 +4,7 @@
 #
 # Copyright:: 2019, Keziah Zhou, All Rights Reserved.
 
+# Uses another cookbook to install PHP and Apache
 include_recipe 'phpInstall::default'
 
 execute 'Get files from S3' do
